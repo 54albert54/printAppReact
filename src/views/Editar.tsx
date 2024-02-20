@@ -10,9 +10,11 @@ const EditCheck = () => {
 
   const saveAllData = () => {
     context?.saveReferences(referencias);
+    context?.setArea("Home")
   };
   const eraserAllData = () => {
     context?.eraseReferences();
+    context?.setArea("Home")
   };
   // const printCheck = ()=>{
   //     window.print()
@@ -38,7 +40,7 @@ const EditCheck = () => {
       </div>
 
       <img
-        className="mt-20 absolute  z-40 w-[720px] h-[320px"
+        className="mt-20 absolute  z-40 w-[720px] h-[320px]"
         id="imgMuestra"
         src={imagenMuestra}
         alt="hola"

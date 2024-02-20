@@ -1,19 +1,33 @@
 import Context from "../context/provider";
 import imagenMuestra from "../../public/access/BanReservasBlank.jpeg";
 
+const SliceDate = ({date}) =>{
+  
+  const dataParts = date?.split(' ') //.map(ele => `<p>${ele}</p>`).join(" ");
+  console.log(dataParts)
+  return (
+    <div className="relative  w-[200px] flex justify-between">
+    {
+      dataParts?.map((ele) =>(
+        <p key={ele}>{ele}</p>
+      ))
+    }
+    </div>
+  )
+}
 
 
 const PrintArea =()=>{
   const context = Context();
 
   const styleRef = (element)=>{
-    console.log(element)
+  
     switch (element) {
       case 'ID':
-        return 'text-[20px] !mb-8  -mt-1 -ml-3'
+        return 'text-[20px]  '
         break;
       case 'Fecha':
-        return ' !w-[100px] flex justify-between'
+        return ' !w-[100px] '
         break;
       case 'DetalleCantidad':
         return 'w-[700px]'
@@ -22,7 +36,7 @@ const PrintArea =()=>{
         return 'w-[400px]'
         break;
       case 'motivo':
-        return 'w-[400px] '
+        return 'w-[370px] '
         break;
       case 'CantidadColilla':
         return ' flex flex-row  w-[80px] '
@@ -31,7 +45,7 @@ const PrintArea =()=>{
         return ''
         break;
       case 'FechaColilla':
-        return 'w-[700px]'
+        return 'w-[700px] ml-4'
         break;
     
       default:
@@ -41,7 +55,7 @@ const PrintArea =()=>{
   
   }
  
-  const isDetailArea =  context?.area == "PrintArea" ? "bg-gray-200 " : ""
+
 
   return(
     <section className={`
@@ -85,7 +99,10 @@ const PrintArea =()=>{
               transition: 'background-color 0.3s ease',
               // cursor: isDragging ? 'grabbing' : 'grab',
              
-            }} className={`absolute   ${styleRef(element.name)}   `}> <p className="  flex justify-start ">{context?.dataToShow[element.name]} </p>
+            }} className={`absolute ${styleRef(element.name)}`}> <p className="  flex justify-start ">
+            {element.name == 'Fecha' ?  <SliceDate date={context?.dataToShow[element.name]}/>  : context?.dataToShow[element.name]} 
+            
+            </p>
             </div>
              
              )
@@ -95,7 +112,7 @@ const PrintArea =()=>{
 
         <section>
         <img
-        className="  z-40 w-[720px] h-[320px"
+        className="  z-40 w-[720px] h-[320px]"
         id="imgMuestra"
         src={imagenMuestra}
         alt="hola"
