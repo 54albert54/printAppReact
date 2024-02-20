@@ -14,6 +14,7 @@ const Print = () => {
     monto: false,
     clientName: false,
     montoValido: false,
+    montoMaximo: false,
   });
   const [values, setValues] = useState({
     motivo: "",
@@ -25,7 +26,7 @@ const Print = () => {
   const checkAllCampos = (e) => {
     
     
-    setAlerta({ ...alertas, clientName: false, montoValido: false });
+    setAlerta({ ...alertas, clientName: false, montoValido: false ,montoMaximo: false });
     const userValue = e.target.name;
     const value = e.target.value;
 
@@ -36,9 +37,11 @@ const Print = () => {
     
     if (userValue == "monto") {
       if(value.length > 7){
-        console.log('maximo 9,999,999');
+     
+        setAlerta({ ...alertas, montoMaximo: true });
         
       }
+   
 
       const regex = /^\d{0,7}(\.\d{0,2})?$/;
 
@@ -86,13 +89,25 @@ const Print = () => {
       let centavosReales = '00'
       if (values.monto.includes('.')) {
         console.log("La cadena contiene un punto.");
-        const part = values.monto.split('.');
+       
+        if (values.monto[values.monto.length-1].length == 1){
+          const part = values.monto.split('.');
+        cantidadSinCero = part[0]
+        centavosReales = part[1].length == 1?`0${ part[1]}`:part[1]
+        
+        }else if (values.monto[values.monto.length-1] == '.'){
+          console.log("termina en punto"+values.monto.slice(0 ,values.monto.length-1))
+        }else{
+          const part = values.monto.split('.');
         cantidadSinCero = part[0]
         centavosReales = part[1].slice(0,2)
+
+        }
+        
         
       } else {
         cantidadSinCero = values.monto
-        console.log("La cadena no contiene un punto.");
+        
       }
      
       const realValue = {
@@ -106,8 +121,9 @@ const Print = () => {
        
         DetalleCantidad: `${convertirNumeroEnPalabras(cantidadSinCero)} con ${centavosReales}/100 `
       };   
-      context?.setDataToShow(realValue)
-      context?.setArea("PrintArea")
+      console.log(realValue)
+      // context?.setDataToShow(realValue)
+      // context?.setArea("PrintArea")
     }
   };
 
@@ -143,6 +159,13 @@ const Print = () => {
           }`}
         >
           Ingresa un monto valido!
+        </p>
+        <p
+          className={`text-red-500 text-[12px] ${
+            alertas.montoMaximo ? "" : "hidden"
+          }`}
+        >
+          La cantidad maxima es 9,999,999!
         </p>
 
         <p id="mensajeErrorCheckeGuardado">
