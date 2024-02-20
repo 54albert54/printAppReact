@@ -113,17 +113,17 @@ const Print = () => {
       const realValue = {
         Fecha:setFecha() ,
         FechaColilla:setFechaColilla(),
-        CantidadColilla:`${separarNumeroConComas(cantidadSinCero)}.${centavosReales} ` ,
-        NombreCliente: values.clientName,
+        CantidadColilla:`$${separarNumeroConComas(cantidadSinCero)}.${centavosReales} ` ,
+        NombreCliente: values.clientName.charAt(0).toUpperCase() +values.clientName.slice(1) ,
         ID:Math.floor(Math.random() * (1900 + 9990) ),
-        motivo:values.motivo,
+        motivo:values.motivo.charAt(0).toUpperCase() +values.motivo.slice(1)+"." ,
         Cantidad: `${separarNumeroConComas(cantidadSinCero)}.${centavosReales} `,
        
         DetalleCantidad: `${convertirNumeroEnPalabras(cantidadSinCero)} con ${centavosReales}/100 `
       };   
       console.log(realValue)
-      // context?.setDataToShow(realValue)
-      // context?.setArea("PrintArea")
+      context?.setDataToShow(realValue)
+      context?.setArea("PrintArea")
     }
   };
 

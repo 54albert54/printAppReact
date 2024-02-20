@@ -1,10 +1,47 @@
 import Context from "../context/provider";
 import imagenMuestra from "../../public/access/BanReservasBlank.jpeg";
 
+
+
 const PrintArea =()=>{
   const context = Context();
- 
+
+  const styleRef = (element)=>{
+    console.log(element)
+    switch (element) {
+      case 'ID':
+        return 'text-[20px] !mb-8  -mt-1 -ml-3'
+        break;
+      case 'Fecha':
+        return ' !w-[100px] flex justify-between'
+        break;
+      case 'DetalleCantidad':
+        return 'w-[700px]'
+        break;
+      case 'NombreCliente':
+        return 'w-[400px]'
+        break;
+      case 'motivo':
+        return 'w-[400px] '
+        break;
+      case 'CantidadColilla':
+        return ' flex flex-row  w-[80px] '
+        break;
+      case 'Cantidad':
+        return ''
+        break;
+      case 'FechaColilla':
+        return 'w-[700px]'
+        break;
+    
+      default:
+        return 'bg-blue-500'
+        break;
+    }
   
+  }
+ 
+  const isDetailArea =  context?.area == "PrintArea" ? "bg-gray-200 " : ""
 
   return(
     <section className={`
@@ -17,9 +54,7 @@ const PrintArea =()=>{
             <li>
               <button
                 onClick={() => context?.setArea("Home")}
-                className={`flex w-[100px] ml-8 ${
-                  context?.area == "PrintArea" ? "bg-gray-200 " : ""
-                }  justify-start rounded-lg hover:bg-gray-200 px-8 py-2 text-sm font-medium text-gray-700`}
+                className={`flex w-[100px] ml-8 bg-gray-200  justify-start rounded-lg hover:bg-gray-200 px-8 py-2 text-sm font-medium text-gray-700`}
               >
                 Back
               </button>
@@ -50,7 +85,7 @@ const PrintArea =()=>{
               transition: 'background-color 0.3s ease',
               // cursor: isDragging ? 'grabbing' : 'grab',
              
-            }} className={`absolute w-[700px]    ${element.name == 'FechaColilla' ? "text-sm left-4   ":""} `}> <p className="  flex justify-start ">{context?.dataToShow[element.name]} </p>
+            }} className={`absolute   ${styleRef(element.name)}   `}> <p className="  flex justify-start ">{context?.dataToShow[element.name]} </p>
             </div>
              
              )
