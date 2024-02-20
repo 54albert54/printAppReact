@@ -20,6 +20,8 @@ type TContext = {
   setArea:(a)=>void
   dataToShow:TRealvalues
    setDataToShow:(e)=>void
+   data:[]
+   saveDataInArchive:(e)=>void
 };
 
 const CheckContext = createContext<TContext | null>(null);
@@ -32,6 +34,12 @@ export const CheckContextProvider = ({ children }) => {
     monto: "",
     clientName: "",
   })
+  const [data ,setData] = useState([])
+
+  const saveDataInArchive =(newCheck)=>{
+    const newData = [...data,newCheck]
+    setData(newData)
+  }
 
   const saveReferences = (newReferences) => {
     setReferences(newReferences);
@@ -48,7 +56,7 @@ export const CheckContextProvider = ({ children }) => {
     references,
     saveReferences,
     eraseReferences,
-    area, setArea
+    area, setArea, data , saveDataInArchive
   };
 
   return (

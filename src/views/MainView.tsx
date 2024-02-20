@@ -1,3 +1,4 @@
+import ModalAlert from "../components/ModalAlert";
 import SideBar from "../components/SideBar";
 import Defaul from "./Defaul";
 
@@ -11,7 +12,9 @@ const MainView =()=>{
 
   return(
     <>
-     <PrintArea/>
+    {/*//TODO terminar de ajustar el alerta para la app */}
+    {/* <ModalAlert/> */}
+     <PrintArea/> 
       
     <section className="flex flex-row w-auto mx-auto">
      

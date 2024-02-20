@@ -4,7 +4,7 @@ import imagenMuestra from "../../public/access/BanReservasBlank.jpeg";
 const SliceDate = ({date}) =>{
   
   const dataParts = date?.split(' ') //.map(ele => `<p>${ele}</p>`).join(" ");
-  console.log(dataParts)
+
   return (
     <div className="relative  w-[200px] flex justify-between">
     {
@@ -54,6 +54,14 @@ const PrintArea =()=>{
     }
   
   }
+  const sendToPrint = ()=>{
+    context?.setArea("Home")
+    //window.print()
+
+    console.log(context?.data)
+    context?.saveDataInArchive(context?.references)
+
+  }
  
 
 
@@ -75,7 +83,7 @@ const PrintArea =()=>{
       </li>
       <li>
               <button
-                onClick={() => window.print()}
+                onClick={sendToPrint}
                 className={`flex w-[100px] ml-8 ${
                   context?.area == "PrintArea" ? "bg-gray-200 " : ""
                 }  justify-start rounded-lg hover:bg-gray-200 px-8 py-2 text-sm font-medium text-gray-700`}
