@@ -10,7 +10,7 @@ export default function MainTableView (){
         console.log('se agrego uno nuevo');
         setData(context?.data)
 
-    },[context?.data])
+    },[context?.data ])
 
     return(
         

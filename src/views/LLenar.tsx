@@ -143,12 +143,14 @@ const Print = () => {
 
 
       
-      
+      console.log(realValue)
      
       context?.setDataToShow(realValue)
       context?.setArea("PrintArea")
     }
   };
+
+  
 
   return (
     <main
