@@ -65,6 +65,8 @@ export const CheckContextProvider = ({ children }) => {
   const saveDataInArchive =(newCheck)=>{
     const newData = [...data,newCheck]
     setData(newData)
+  
+    console.log(newCheck)
   }
 
   const saveReferences = (newReferences) => {

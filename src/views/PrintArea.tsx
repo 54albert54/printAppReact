@@ -27,8 +27,8 @@ const PrintArea =()=>{
   const handleKeyPress = (e)=>{
     if (e.key === 'Enter' && goProint ){
       console.log('print = '+goProint)
-      if (pressEnert > 3){
-        sendToPrint()
+      if (pressEnert > 1){
+     //   sendToPrint()
         pressEnert = 0
       }else{
         pressEnert ++
@@ -40,6 +40,7 @@ const PrintArea =()=>{
   }
 
 useEffect(()=>{
+  
   console.log(context?.area)
   if (context?.area === "PrintArea" ){
     goProint = true
@@ -93,8 +94,8 @@ useEffect(()=>{
     context?.setArea("Home")
     //window.print()
 
-    console.log(context?.data)
     context?.saveDataInArchive(context?.dataToShow)
+    
 
   }
  
