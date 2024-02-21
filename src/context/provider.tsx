@@ -38,6 +38,8 @@ type TContext = {
    data:TDataToShow[]
 
    saveDataInArchive:(e)=>void
+   printArea:boolean
+  setPrintArea:(e:boolean)=>void
 };
 
 
@@ -47,6 +49,7 @@ const CheckContext = createContext<TContext | null>(null);
 export const CheckContextProvider = ({ children }) => {
   const [references, setReferences] = useState(referencias);
   const [area, setArea] = useState('Home');
+  const [printArea, setPrintArea] = useState(false)
   const [dataToShow , setDataToShow] = useState<TRealvalues>({
     centavos: "",
     monto: "",
@@ -79,7 +82,8 @@ export const CheckContextProvider = ({ children }) => {
     references,
     saveReferences,
     eraseReferences,
-    area, setArea, data , saveDataInArchive
+    area, setArea, data , saveDataInArchive,
+    printArea, setPrintArea
   };
 
   return (

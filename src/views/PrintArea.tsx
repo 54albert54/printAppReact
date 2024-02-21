@@ -1,4 +1,5 @@
 import Context from "../context/provider";
+import { useEffect, useState } from "react";
 import imagenMuestra from "../../public/access/BanReservasBlank.jpeg";
 
 const SliceDate = ({date}) =>{
@@ -18,18 +19,43 @@ const SliceDate = ({date}) =>{
 
 
 
-
-
+let goProint = false
+let pressEnert = 0
 const PrintArea =()=>{
   const context = Context();
+  
+  const handleKeyPress = (e)=>{
+    if (e.key === 'Enter' && goProint ){
+      console.log('print = '+goProint)
+      if (pressEnert > 3){
+        sendToPrint()
+        pressEnert = 0
+      }else{
+        pressEnert ++
+      }
+      
+    
+   
+  }
+  }
 
- const onKeyDownHandler =( e) => {
-   // if (e.keyCode === 13) {
-      console.log('presionaste Enter')
-  //  }
-  };
+useEffect(()=>{
+  console.log(context?.area)
+  if (context?.area === "PrintArea" ){
+    goProint = true
+    console.log("estasssssssssssssssss ="+goProint)
 
-  const styleRef = (element)=>{
+    window.addEventListener("keydown" , handleKeyPress)
+  }else{
+    goProint = false
+    console.log("no para print = "+goProint)
+    window.removeEventListener("keydown" , handleKeyPress)
+  }
+ 
+ 
+},[context?.area])
+
+  const styleRef = (element:string)=>{
   
     switch (element) {
       case 'ID':
@@ -79,7 +105,7 @@ const PrintArea =()=>{
 
   return(
     <section
-    onKeyDownCapture={onKeyDownHandler}
+    
     className={`
     ${
       context?.area == "PrintArea" ? " " : "hidden"
