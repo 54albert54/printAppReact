@@ -118,7 +118,7 @@ const LLenar = () => {
         ID:Math.floor(Math.random() * (1900 + 9990) ),
         motivo:values.motivo.charAt(0).toUpperCase() +values.motivo.slice(1)+"." ,
         Cantidad: `${separarNumeroConComas(cantidadSinCero)}.${centavosReales} `,
-       
+        active:true,
         DetalleCantidad: `${convertirNumeroEnPalabras(cantidadSinCero)} con ${centavosReales}/100 `
       };   
       console.log(realValue)

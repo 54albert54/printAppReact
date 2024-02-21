@@ -17,6 +17,7 @@ export interface TDataToShow{
   ID:number,
   motivo:string
   Cantidad:string 
+  active:boolean,
   DetalleCantidad: 'mas letras de los numeros'
 
 }

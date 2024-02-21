@@ -1,17 +1,6 @@
 import MainTableView from "../components/MainTableView";
 import Context from "../context/provider";
 
-// export interface TDataToShow{
-//   Fecha:string
-//   FechaColilla:string
-//   CantidadColilla:string
-//   NombreCliente:string
-//   ID:number,
-//   motivo:string
-//   Cantidad:string 
-//   DetalleCantidad: 'mas letras de los numeros'
-
-// }
 
 const Home =()=>{
   const context = Context();
