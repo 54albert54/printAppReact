@@ -59,7 +59,11 @@ const PrintArea =()=>{
     //window.print()
 
     console.log(context?.data)
+<<<<<<< HEAD
     context?.saveDataInArchive(context?.references)
+=======
+    context?.saveDataInArchive(context?.dataToShow)
+>>>>>>> 0057fd9 (some changes)
 
   }
  

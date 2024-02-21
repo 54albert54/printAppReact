@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import Context from "../context/provider";
 import { convertirNumeroEnPalabras, separarNumeroConComas, setFecha  ,setFechaColilla} from "../context/storage";
 import InputComponent from "../components/InputComponent";
-
+// git config --global user.email
 
 
 
@@ -131,13 +131,13 @@ const Print = () => {
     <main
       className={` ${
         context?.area == "Print" ? " " : "hidden"
-      }  z-10 relative bg-white w-[860px] h-[720px] shadow-xl m-auto     justify-between px-12 pt-6`}
+      }  z-10 relative bg-white w-[860px] h-full shadow-xl m-auto      justify-between px-12 pt-6`}
     >
-      <h2 className="itemsToDisappear w-full text-center font-bold pb-20 text-xl text-indigo-600">
+      <h2 className="itemsToDisappear w-full text-center font-bold mb-2 text-xl text-indigo-600">
         Vista previa
       </h2>
 
-      <div className="  mb-8 h-12 text-red-500 text-[12px] ">
+      <div className="  mb-2 h-12 text-red-500 mb-4 text-[12px] ">
         <p
           className={`text-red-500 text-[12px] ${
             alertas.clientName ? "" : "hidden"
@@ -234,7 +234,7 @@ const Form = ({checkAllCampos ,sendValues}) => {
 
 // type="text"
   return (
-    <form className="flex w-full gap-10 flex-col   " onSubmit={()=>console.log("se dio summier")}>
+    <form className="flex w-full gap-8 flex-col   " onSubmit={()=>console.log("se dio summier")}>
 
       {inputRefs.map((inputRef, index) => (
           <InputComponent key={index} inputDetails={inputDetails} index={index} checkAllCampos={checkAllCampos} inputRef={inputRef} handleKeyDown={handleKeyDown}/>

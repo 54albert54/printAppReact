@@ -11,6 +11,28 @@ interface TRealvalues {
   monto: string;
   clientName:string;
 }
+export interface TDataToShow{
+  Fecha:string
+  FechaColilla:string
+  CantidadColilla:string
+  NombreCliente:string
+  ID:number,
+  motivo:string
+  Cantidad:string 
+  DetalleCantidad: 'mas letras de los numeros'
+
+}
+const pruebaCheck:TDataToShow = {
+  Fecha:'12/12/2900' ,
+  FechaColilla:'12/12/2900',
+  CantidadColilla:'123.00',
+  NombreCliente: 'Jon Carter' ,
+  ID:1000,
+  motivo:"mensale para probar esto de preba" ,
+  Cantidad:'123.00' ,
+ 
+  DetalleCantidad: 'mas letras de los numeros'
+};
 
 type TContext = {
   references: [TReference];
@@ -20,7 +42,11 @@ type TContext = {
   setArea:(a)=>void
   dataToShow:TRealvalues
    setDataToShow:(e)=>void
+<<<<<<< HEAD
    data:[]
+=======
+   data:TDataToShow[]
+>>>>>>> 0057fd9 (some changes)
    saveDataInArchive:(e)=>void
 };
 
@@ -34,7 +60,11 @@ export const CheckContextProvider = ({ children }) => {
     monto: "",
     clientName: "",
   })
+<<<<<<< HEAD
   const [data ,setData] = useState([])
+=======
+  const [data ,setData] = useState<TDataToShow[]>([pruebaCheck])
+>>>>>>> 0057fd9 (some changes)
 
   const saveDataInArchive =(newCheck)=>{
     const newData = [...data,newCheck]
