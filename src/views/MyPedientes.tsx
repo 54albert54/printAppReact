@@ -14,6 +14,7 @@ const MyPendietes =()=>{
       <p>[] Filtrar los ceros en la cantidad  a pointer</p>
       <p>[] Hacer que cuando este en el area de printar detecte el Enter</p>
       <p>[] Seperar los componentes en statesLess</p>
+      <p>[] Diferenciar las referencias con colores</p>
     </div>
      
     </main>

@@ -16,7 +16,7 @@ const Print = () => {
     clientName: false,
     montoValido: false,
     montoMaximo: false,
-    montoMaximo: false,
+ 
   });
   const [values, setValues] = useState({
     motivo: "",
@@ -29,7 +29,7 @@ const Print = () => {
     
     
     setAlerta({ ...alertas, clientName: false, montoValido: false ,montoMaximo: false });
-    setAlerta({ ...alertas, clientName: false, montoValido: false ,montoMaximo: false });
+
     const userValue = e.target.name;
     const value = e.target.value;
 
@@ -43,7 +43,7 @@ const Print = () => {
      
         setAlerta({ ...alertas, montoMaximo: true });
      
-        setAlerta({ ...alertas, montoMaximo: true });
+
         
       }
    
@@ -139,13 +139,12 @@ const Print = () => {
         NombreCliente: values.clientName.charAt(0).toUpperCase() +values.clientName.slice(1) ,
         ID:Math.floor(Math.random() * (1900 + 9990) ),
         motivo:values.motivo.charAt(0).toUpperCase() +values.motivo.slice(1)+"." ,
-        motivo:values.motivo.charAt(0).toUpperCase() +values.motivo.slice(1)+"." ,
+        active:true,
         Cantidad: `${separarNumeroConComas(cantidadSinCero)}.${centavosReales} `,
        
         DetalleCantidad: `${convertirNumeroEnPalabras(cantidadSinCero)} con ${centavosReales}/100 `
       };   
-      console.log(realValue)
-      console.log(realValue)
+     
       context?.setDataToShow(realValue)
       context?.setArea("PrintArea")
     }
@@ -156,15 +155,15 @@ const Print = () => {
       className={` ${
         context?.area == "Print" ? " " : "hidden"
       }  z-10 relative bg-white w-[860px] h-full shadow-xl m-auto      justify-between px-12 pt-6`}
-      }  z-10 relative bg-white w-[860px] h-full shadow-xl m-auto      justify-between px-12 pt-6`}
+    
     >
-      <h2 className="itemsToDisappear w-full text-center font-bold mb-2 text-xl text-indigo-600">
+     
       <h2 className="itemsToDisappear w-full text-center font-bold mb-2 text-xl text-indigo-600">
         Vista previa
       </h2>
 
-      <div className="  mb-2 h-12 text-red-500 mb-4 text-[12px] ">
-      <div className="  mb-2 h-12 text-red-500 mb-4 text-[12px] ">
+      
+      <div className="   h-12 text-red-500 mb-4 text-[12px] ">
         <p
           className={`text-red-500 text-[12px] ${
             alertas.clientName ? "" : "hidden"
@@ -269,7 +268,7 @@ const Form = ({checkAllCampos ,sendValues}) => {
 // type="text"
   return (
     <form className="flex w-full gap-8 flex-col   " onSubmit={()=>console.log("se dio summier")}>
-    <form className="flex w-full gap-8 flex-col   " onSubmit={()=>console.log("se dio summier")}>
+
 
       {inputRefs.map((inputRef, index) => (
           <InputComponent key={index} inputDetails={inputDetails} index={index} checkAllCampos={checkAllCampos} inputRef={inputRef} handleKeyDown={handleKeyDown}/>

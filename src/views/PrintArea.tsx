@@ -17,20 +17,7 @@ const SliceDate = ({date}) =>{
 }
 
 
-const SliceDate = ({date}) =>{
-  
-  const dataParts = date?.split(' ') //.map(ele => `<p>${ele}</p>`).join(" ");
 
-  return (
-    <div className="relative  w-[200px] flex justify-between">
-    {
-      dataParts?.map((ele) =>(
-        <p key={ele}>{ele}</p>
-      ))
-    }
-    </div>
-  )
-}
 
 
 const PrintArea =()=>{
@@ -81,49 +68,7 @@ const PrintArea =()=>{
  
 
 
-  const styleRef = (element)=>{
-  
-    switch (element) {
-      case 'ID':
-        return 'text-[20px]  '
-        break;
-      case 'Fecha':
-        return ' !w-[100px] '
-        break;
-      case 'DetalleCantidad':
-        return 'w-[700px]'
-        break;
-      case 'NombreCliente':
-        return 'w-[400px]'
-        break;
-      case 'motivo':
-        return 'w-[370px] '
-        break;
-      case 'CantidadColilla':
-        return ' flex flex-row  w-[80px] '
-        break;
-      case 'Cantidad':
-        return ''
-        break;
-      case 'FechaColilla':
-        return 'w-[700px] ml-4'
-        break;
-    
-      default:
-        return 'bg-blue-500'
-        break;
-    }
-  
-  }
-  const sendToPrint = ()=>{
-    context?.setArea("Home")
-    //window.print()
 
-    console.log(context?.data)
-    context?.saveDataInArchive(context?.dataToShow)
-
-  }
- 
 
 
   return(
@@ -146,7 +91,7 @@ const PrintArea =()=>{
       <li>
               <button
                 onClick={sendToPrint}
-                onClick={sendToPrint}
+              
                 className={`flex w-[100px] ml-8 ${
                   context?.area == "PrintArea" ? "bg-gray-200 " : ""
                 }  justify-start rounded-lg hover:bg-gray-200 px-8 py-2 text-sm font-medium text-gray-700`}
@@ -174,10 +119,6 @@ const PrintArea =()=>{
             {element.name == 'Fecha' ?  <SliceDate date={context?.dataToShow[element.name]}/>  : context?.dataToShow[element.name]} 
             
             </p>
-            }} className={`absolute ${styleRef(element.name)}`}> <p className="  flex justify-start ">
-            {element.name == 'Fecha' ?  <SliceDate date={context?.dataToShow[element.name]}/>  : context?.dataToShow[element.name]} 
-            
-            </p>
             </div>
              
              )
@@ -187,7 +128,6 @@ const PrintArea =()=>{
 
         <section>
         <img
-        className="  z-40 w-[720px] h-[320px]"
         className="  z-40 w-[720px] h-[320px]"
         id="imgMuestra"
         src={imagenMuestra}
