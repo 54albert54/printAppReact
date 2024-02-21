@@ -206,7 +206,7 @@ export function setFecha(){
   const mes = fechaActual.getMonth() + 1; // El mes es devuelto en base 0 (enero es 0)
   const año = fechaActual.getFullYear();
 
-  return  dia+ ""+"  "+mes+" "+""+año
+  return `${dia} ${mes} ${año}`
 }
 
 export function setFechaColilla(){
@@ -217,7 +217,7 @@ export function setFechaColilla(){
   const mes = fechaActual.getMonth() + 1; // El mes es devuelto en base 0 (enero es 0)
   const año = fechaActual.getFullYear();
 
-  return `${dia} / ${mes} / ${año}`
+  return `${dia}/${mes}/${año}`
 
 }
 

@@ -1,10 +1,11 @@
 import ModalAlert from "../components/ModalAlert";
 import SideBar from "../components/SideBar";
-import Defaul from "./Defaul";
+import Default from "./Default";
 
 import EditCheck from "./Editar";
 import Home from "./Home";
-import Print from "./LLenar";
+import LLenar from "./LLenar";
+import MyPendietes from "./MyPedientes";
 import PrintArea from "./PrintArea";
 
 const MainView =()=>{
@@ -16,7 +17,7 @@ const MainView =()=>{
     {/* <ModalAlert/> */}
      <PrintArea/> 
       
-    <section className="flex flex-row w-auto mx-auto">
+    <section className="flex flex-row justify-center h-screen p-20 ">
      
       <SideBar/>
       <section>
@@ -24,8 +25,9 @@ const MainView =()=>{
 
         <EditCheck/>
         <Home/>
-        <Print/>
-        {/* <Defaul/> */}
+        <LLenar/>
+        <MyPendietes/>
+        {/* <Default/> */}
         
 
       </section>
