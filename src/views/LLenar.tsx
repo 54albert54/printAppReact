@@ -16,6 +16,7 @@ const Print = () => {
     clientName: false,
     montoValido: false,
     montoMaximo: false,
+    inicioCero: false,
  
   });
   const [values, setValues] = useState({
@@ -28,7 +29,7 @@ const Print = () => {
   const checkAllCampos = (e) => {
     
     
-    setAlerta({ ...alertas, clientName: false, montoValido: false ,montoMaximo: false });
+    setAlerta({ ...alertas, clientName: false, montoValido: false ,montoMaximo:false ,inicioCero: false, });
 
     const userValue = e.target.name;
     const value = e.target.value;
@@ -40,11 +41,15 @@ const Print = () => {
     
     if (userValue == "monto") {
       if(value.length > 7){
-     
-        setAlerta({ ...alertas, montoMaximo: true });
-     
 
-        
+        setAlerta({ ...alertas, montoMaximo: true });
+      }
+      if (e.target.value == '0' || e.target.value == '.'){
+        console.log("no se puede iniciar con 0)")
+        values.monto = ''
+        e.target.value = ""  //values.monto.slice(0, value.length - 1 );
+        setAlerta({ ...alertas, inicioCero: true });
+        //inicioCero: false,
       }
    
    
@@ -55,12 +60,6 @@ const Print = () => {
         e.target.value = values.monto.slice(0, value.length - 1 );
         
       } 
-     
-
-
-    
-      
-
 
      }
 
@@ -78,12 +77,6 @@ const Print = () => {
     }
 
 
-
-
-
-
-
-    
 
     if (values.clientName.length < 3) {
       setAlerta({ ...alertas, clientName: true });
@@ -126,10 +119,12 @@ const Print = () => {
         
       } else {
         cantidadSinCero = values.monto
-        
+        setValues({...values,motivo:''})
         
       }
-     
+      
+      
+      const motivoDefault = values.motivo == ''? "No ingresaste motivo":values.motivo
       const realValue = {
         Fecha:setFecha() ,
         FechaColilla:setFechaColilla(),
@@ -138,12 +133,17 @@ const Print = () => {
         CantidadColilla:`$${separarNumeroConComas(cantidadSinCero)}.${centavosReales} ` ,
         NombreCliente: values.clientName.charAt(0).toUpperCase() +values.clientName.slice(1) ,
         ID:Math.floor(Math.random() * (1900 + 9990) ),
-        motivo:values.motivo.charAt(0).toUpperCase() +values.motivo.slice(1)+"." ,
+        motivo:motivoDefault.charAt(0).toUpperCase() +motivoDefault.slice(1)+"." ,
         active:true,
         Cantidad: `${separarNumeroConComas(cantidadSinCero)}.${centavosReales} `,
        
         DetalleCantidad: `${convertirNumeroEnPalabras(cantidadSinCero)} con ${centavosReales}/100 `
-      };   
+      }; 
+
+
+
+      
+      
      
       context?.setDataToShow(realValue)
       context?.setArea("PrintArea")
@@ -199,6 +199,13 @@ const Print = () => {
           }`}
         >
           La cantidad maxima es 9,999,999!
+        </p>
+        <p
+          className={`text-red-500 text-[12px] ${
+            alertas.inicioCero ? "" : "hidden"
+          }`}
+        >
+          Debes ingresar un numero!
         </p>
 
         <p id="mensajeErrorCheckeGuardado">

@@ -16,6 +16,11 @@ const MyPendietes =()=>{
       <p>[] Seperar los componentes en statesLess</p>
       <p>[] Diferenciar las referencias con colores</p>
     </div>
+    <div>
+      <p>se puede hacer</p>
+      <p>[] Definir mensaje:motvio por defaul</p>
+     
+    </div>
      
     </main>
     )
