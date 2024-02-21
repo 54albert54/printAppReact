@@ -6,7 +6,7 @@ import MainView from './views/MainView';
 function App() {
  
   return (
-    <main className=' w-full  h-screen bg-[#424242]   '>
+    <main className=' w-full  h-full bg-[#424242]   '>
      <MainView/>
     </main>
   )

@@ -154,7 +154,7 @@ const Print = () => {
     <main
       className={` ${
         context?.area == "Print" ? " " : "hidden"
-      }  z-10 relative bg-white w-[860px] h-full shadow-xl m-auto      justify-between px-12 pt-6`}
+      }  z-10 relative bg-white w-[860px] h-[520px] shadow-xl m-auto      justify-between px-12 pt-6`}
     
     >
      

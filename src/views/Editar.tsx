@@ -27,7 +27,7 @@ const EditCheck = () => {
     <main
       className={` ${
         context?.area == "Editar"? "z-20" : "z-0 hidden"
-      }  relative  bg-backGround w-[860px] h-full shadow-xl m-auto flex flex-col  justify-between px-12 pt-6`}
+      }  relative  bg-backGround w-[860px] h-[520px] shadow-xl m-auto flex flex-col  justify-between px-12 pt-6`}
     >
       <div className="absolute top-4 left-0  w-full flex justify-center">
         <h2 className="itemsToDisappear w-full text-center font-bold text-xl text-indigo-600">

@@ -17,7 +17,7 @@ const MainView =()=>{
     {/* <ModalAlert/> */}
      <PrintArea/> 
       
-    <section className="flex flex-row justify-center h-screen p-20 ">
+    <section className="flex flex-row justify-center h-screen  overflow-hidden pt-6 px-20 ">
      
       <SideBar/>
       <section>
