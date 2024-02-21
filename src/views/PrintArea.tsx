@@ -23,6 +23,12 @@ const SliceDate = ({date}) =>{
 const PrintArea =()=>{
   const context = Context();
 
+ const onKeyDownHandler =( e) => {
+   // if (e.keyCode === 13) {
+      console.log('presionaste Enter')
+  //  }
+  };
+
   const styleRef = (element)=>{
   
     switch (element) {
@@ -72,7 +78,9 @@ const PrintArea =()=>{
 
 
   return(
-    <section className={`
+    <section
+    onKeyDownCapture={onKeyDownHandler}
+    className={`
     ${
       context?.area == "PrintArea" ? " " : "hidden"
     }
@@ -83,7 +91,7 @@ const PrintArea =()=>{
               <button
                 onClick={() => context?.setArea("Home")}
                 className={`flex w-[100px] ml-8 bg-gray-200  justify-start rounded-lg hover:bg-gray-200 px-8 py-2 text-sm font-medium text-gray-700`}
-                className={`flex w-[100px] ml-8 bg-gray-200  justify-start rounded-lg hover:bg-gray-200 px-8 py-2 text-sm font-medium text-gray-700`}
+              //  className={`flex w-[100px] ml-8 bg-gray-200  justify-start rounded-lg hover:bg-gray-200 px-8 py-2 text-sm font-medium text-gray-700`}
               >
                 Back
               </button>
