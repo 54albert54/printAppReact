@@ -1,27 +1,8 @@
 import { createContext, useContext, useState } from "react";
 import { referencias } from "./storage";
+import { TDataToShow, TRealvalues, TReference } from "./types";
 
-interface TReference {
-  name: string;
-  Left: string;
-  Top: string;
-}
-interface TRealvalues {
-  centavos: string;
-  monto: string;
-  clientName:string;
-}
-export interface TDataToShow{
-  Fecha:string
-  FechaColilla:string
-  CantidadColilla:string
-  NombreCliente:string
-  ID:number,
-  motivo:string
-  Cantidad:string 
-  DetalleCantidad: 'mas letras de los numeros'
 
-}
 const pruebaCheck:TDataToShow = {
   Fecha:'12/12/2900' ,
   FechaColilla:'12/12/2900',

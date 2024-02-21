@@ -6,7 +6,7 @@ import InputComponent from "../components/InputComponent";
 
 
 
-const Print = () => {
+const LLenar = () => {
 
   const context = Context();
   const [alertas, setAlerta] = useState({
@@ -130,14 +130,14 @@ const Print = () => {
   return (
     <main
       className={` ${
-        context?.area == "Print" ? " " : "hidden"
-      }  z-10 relative bg-white w-[860px] h-full shadow-xl m-auto      justify-between px-12 pt-6`}
+        context?.area == "Print" ? "z-20" : "z-0 hidden"
+      }  relative  bg-backGround w-[860px] h-full shadow-xl m-auto      justify-between px-12 pt-6`}
     >
       <h2 className="itemsToDisappear w-full text-center font-bold mb-2 text-xl text-indigo-600">
         Vista previa
       </h2>
 
-      <div className="  mb-2 h-12 text-red-500 mb-4 text-[12px] ">
+      <div className="   h-12 text-red-500 mb-4 text-[12px] ">
         <p
           className={`text-red-500 text-[12px] ${
             alertas.clientName ? "" : "hidden"
@@ -176,7 +176,7 @@ const Print = () => {
       {/* <FormularioCheck checkAllCampos={checkAllCampos}/> */}
       <Form checkAllCampos={checkAllCampos} sendValues={sendValues}/>
      
-      <div className="absolute bottom-0 z-20  left-6 h-24 flex flex-row justify-center items-center gap-12 bg-white max-w-[760px] w-screen m-auto">
+      <div className="absolute bottom-0 z-20  left-6 h-24 flex flex-row justify-center items-center gap-12  max-w-[760px] w-screen m-auto">
         {/* Print */}
         <div
           onClick={sendValues}
@@ -207,7 +207,7 @@ const Print = () => {
   );
 };
 
-export default Print;
+export default LLenar;
 
 
 
