@@ -42,11 +42,9 @@ type TContext = {
   setArea:(a)=>void
   dataToShow:TRealvalues
    setDataToShow:(e)=>void
-<<<<<<< HEAD
-   data:[]
-=======
+
    data:TDataToShow[]
->>>>>>> 0057fd9 (some changes)
+
    saveDataInArchive:(e)=>void
 };
 
@@ -60,11 +58,9 @@ export const CheckContextProvider = ({ children }) => {
     monto: "",
     clientName: "",
   })
-<<<<<<< HEAD
-  const [data ,setData] = useState([])
-=======
+
   const [data ,setData] = useState<TDataToShow[]>([pruebaCheck])
->>>>>>> 0057fd9 (some changes)
+
 
   const saveDataInArchive =(newCheck)=>{
     const newData = [...data,newCheck]

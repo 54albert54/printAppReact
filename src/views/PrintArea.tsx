@@ -59,11 +59,9 @@ const PrintArea =()=>{
     //window.print()
 
     console.log(context?.data)
-<<<<<<< HEAD
-    context?.saveDataInArchive(context?.references)
-=======
+
     context?.saveDataInArchive(context?.dataToShow)
->>>>>>> 0057fd9 (some changes)
+
 
   }
  
@@ -74,7 +72,7 @@ const PrintArea =()=>{
     ${
       context?.area == "PrintArea" ? " " : "hidden"
     }
-     absolute bg-white z-10 h-[90%]  w-screen flex justify-center `}>
+     absolute bg-white z-10 h-[90%] w-screen  md:w-[90%]  min-w-[720px] min-h-[320px] flex justify-center `}>
       <div>
       <ul className="mt-6  absolute top-1 left-4 flex">
             <li>
@@ -124,7 +122,7 @@ const PrintArea =()=>{
 
         <section>
         <img
-        className="  z-40 w-[720px] h-[320px]"
+        className="  z-10  w-[720px] h-[320px]"
         id="imgMuestra"
         src={imagenMuestra}
         alt="hola"
