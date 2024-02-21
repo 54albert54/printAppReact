@@ -7,7 +7,7 @@ const SideBar = () => {
     <section className={` ${
       context?.area != "PrintArea" ? " " : "hidden"
     }`}>
-      <div className="flex relative h-[720px]  w-[320px]  z-30 shadow-xl  flex-col justify-between border-e bg-white">
+      <div className="flex relative h-full  w-[320px]  z-30 shadow-xl  flex-col justify-between border-e bg-white">
         <div className="px-4 py-6">
           <span className="grid h-10 w-32 place-content-center rounded-lg bg-gray-100 text-xs text-gray-600">
             Logo

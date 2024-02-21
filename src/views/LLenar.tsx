@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import Context from "../context/provider";
 import { convertirNumeroEnPalabras, separarNumeroConComas, setFecha  ,setFechaColilla} from "../context/storage";
 import InputComponent from "../components/InputComponent";
-
+// git config --global user.email
 
 
 
@@ -14,6 +14,7 @@ const Print = () => {
     monto: false,
     clientName: false,
     montoValido: false,
+    montoMaximo: false,
   });
   const [values, setValues] = useState({
     motivo: "",
@@ -25,7 +26,7 @@ const Print = () => {
   const checkAllCampos = (e) => {
     
     
-    setAlerta({ ...alertas, clientName: false, montoValido: false });
+    setAlerta({ ...alertas, clientName: false, montoValido: false ,montoMaximo: false });
     const userValue = e.target.name;
     const value = e.target.value;
 
@@ -36,9 +37,11 @@ const Print = () => {
     
     if (userValue == "monto") {
       if(value.length > 7){
-        console.log('maximo 9,999,999');
+     
+        setAlerta({ ...alertas, montoMaximo: true });
         
       }
+   
 
       const regex = /^\d{0,7}(\.\d{0,2})?$/;
 
@@ -86,26 +89,39 @@ const Print = () => {
       let centavosReales = '00'
       if (values.monto.includes('.')) {
         console.log("La cadena contiene un punto.");
-        const part = values.monto.split('.');
+       
+        if (values.monto[values.monto.length-1].length == 1){
+          const part = values.monto.split('.');
+        cantidadSinCero = part[0]
+        centavosReales = part[1].length == 1?`0${ part[1]}`:part[1]
+        
+        }else if (values.monto[values.monto.length-1] == '.'){
+          console.log("termina en punto"+values.monto.slice(0 ,values.monto.length-1))
+        }else{
+          const part = values.monto.split('.');
         cantidadSinCero = part[0]
         centavosReales = part[1].slice(0,2)
+
+        }
+        
         
       } else {
         cantidadSinCero = values.monto
-        console.log("La cadena no contiene un punto.");
+        
       }
      
       const realValue = {
         Fecha:setFecha() ,
         FechaColilla:setFechaColilla(),
-        CantidadColilla:`${separarNumeroConComas(cantidadSinCero)}.${centavosReales} ` ,
-        NombreCliente: values.clientName,
+        CantidadColilla:`$${separarNumeroConComas(cantidadSinCero)}.${centavosReales} ` ,
+        NombreCliente: values.clientName.charAt(0).toUpperCase() +values.clientName.slice(1) ,
         ID:Math.floor(Math.random() * (1900 + 9990) ),
-        motivo:values.motivo,
+        motivo:values.motivo.charAt(0).toUpperCase() +values.motivo.slice(1)+"." ,
         Cantidad: `${separarNumeroConComas(cantidadSinCero)}.${centavosReales} `,
        
         DetalleCantidad: `${convertirNumeroEnPalabras(cantidadSinCero)} con ${centavosReales}/100 `
       };   
+      console.log(realValue)
       context?.setDataToShow(realValue)
       context?.setArea("PrintArea")
     }
@@ -115,13 +131,13 @@ const Print = () => {
     <main
       className={` ${
         context?.area == "Print" ? " " : "hidden"
-      }  z-10 relative bg-white w-[860px] h-[720px] shadow-xl m-auto     justify-between px-12 pt-6`}
+      }  z-10 relative bg-white w-[860px] h-full shadow-xl m-auto      justify-between px-12 pt-6`}
     >
-      <h2 className="itemsToDisappear w-full text-center font-bold pb-20 text-xl text-indigo-600">
+      <h2 className="itemsToDisappear w-full text-center font-bold mb-2 text-xl text-indigo-600">
         Vista previa
       </h2>
 
-      <div className="  mb-8 h-12 text-red-500 text-[12px] ">
+      <div className="  mb-2 h-12 text-red-500 mb-4 text-[12px] ">
         <p
           className={`text-red-500 text-[12px] ${
             alertas.clientName ? "" : "hidden"
@@ -143,6 +159,13 @@ const Print = () => {
           }`}
         >
           Ingresa un monto valido!
+        </p>
+        <p
+          className={`text-red-500 text-[12px] ${
+            alertas.montoMaximo ? "" : "hidden"
+          }`}
+        >
+          La cantidad maxima es 9,999,999!
         </p>
 
         <p id="mensajeErrorCheckeGuardado">
@@ -211,7 +234,7 @@ const Form = ({checkAllCampos ,sendValues}) => {
 
 // type="text"
   return (
-    <form className="flex w-full gap-10 flex-col   " onSubmit={()=>console.log("se dio summier")}>
+    <form className="flex w-full gap-8 flex-col   " onSubmit={()=>console.log("se dio summier")}>
 
       {inputRefs.map((inputRef, index) => (
           <InputComponent key={index} inputDetails={inputDetails} index={index} checkAllCampos={checkAllCampos} inputRef={inputRef} handleKeyDown={handleKeyDown}/>

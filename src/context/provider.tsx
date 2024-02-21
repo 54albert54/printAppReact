@@ -11,6 +11,28 @@ interface TRealvalues {
   monto: string;
   clientName:string;
 }
+export interface TDataToShow{
+  Fecha:string
+  FechaColilla:string
+  CantidadColilla:string
+  NombreCliente:string
+  ID:number,
+  motivo:string
+  Cantidad:string 
+  DetalleCantidad: 'mas letras de los numeros'
+
+}
+const pruebaCheck:TDataToShow = {
+  Fecha:'12/12/2900' ,
+  FechaColilla:'12/12/2900',
+  CantidadColilla:'123.00',
+  NombreCliente: 'Jon Carter' ,
+  ID:1000,
+  motivo:"mensale para probar esto de preba" ,
+  Cantidad:'123.00' ,
+ 
+  DetalleCantidad: 'mas letras de los numeros'
+};
 
 type TContext = {
   references: [TReference];
@@ -20,6 +42,8 @@ type TContext = {
   setArea:(a)=>void
   dataToShow:TRealvalues
    setDataToShow:(e)=>void
+   data:TDataToShow[]
+   saveDataInArchive:(e)=>void
 };
 
 const CheckContext = createContext<TContext | null>(null);
@@ -32,6 +56,12 @@ export const CheckContextProvider = ({ children }) => {
     monto: "",
     clientName: "",
   })
+  const [data ,setData] = useState<TDataToShow[]>([pruebaCheck])
+
+  const saveDataInArchive =(newCheck)=>{
+    const newData = [...data,newCheck]
+    setData(newData)
+  }
 
   const saveReferences = (newReferences) => {
     setReferences(newReferences);
@@ -48,7 +78,7 @@ export const CheckContextProvider = ({ children }) => {
     references,
     saveReferences,
     eraseReferences,
-    area, setArea
+    area, setArea, data , saveDataInArchive
   };
 
   return (
