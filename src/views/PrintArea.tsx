@@ -99,11 +99,9 @@ const PrintArea = () => {
             style={{
               top: element.Top + "px",
               left: element.Left - 25 + "px",
-              transition: "background-color 0.3s ease",
             }}
             className={`absolute ${styleRef(element.name)}`}
           >
-            {" "}
             <p className="  flex justify-start ">
               {element.name == "Fecha" ? (
                 <SliceDate date={context?.dataToShow[element.name]} />
@@ -118,7 +116,7 @@ const PrintArea = () => {
         <ShowImgBlank/>
       
     </section>
-  );
-};
+  )
+}
 
 export default PrintArea;
