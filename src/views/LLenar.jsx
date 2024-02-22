@@ -33,8 +33,9 @@ const Llenar = () => {
     context.area == "Llenar" ? setIsVisible(true) : setIsVisible(false);
   }, [context.area]);
 
-  //context?.setArea("PrintArea")
+
   const checkAllCampos = (e) => {
+
     setAlerta({
       ...alertas,
       clientName: false,
@@ -45,6 +46,11 @@ const Llenar = () => {
 
     const userValue = e.target.name;
     const value = e.target.value;
+    //por si se borrar todo no quede guardado
+    if (value.length < 1 ){
+      setValues({ ...values, [userValue]: ''});
+    }
+ 
 
     if (userValue == "monto") {
       if (value.length > 7) {
@@ -122,6 +128,11 @@ const Llenar = () => {
           cantidadSinCero
         )} con ${centavosReales}/100 `,
       };
+      setValues({
+        motivo: "",
+        monto: "",
+        clientName: "",
+      })
 
       context?.setDataToShow(realValue);
       context?.setArea("PrintArea");

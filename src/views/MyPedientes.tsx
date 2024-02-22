@@ -15,8 +15,8 @@ const MyPendietes =()=>{
       <p>[] conectar  base de datos</p>
       <p>[] hacer y el login</p>
       <p>[] hacer componente Titilo para todas la areas</p>
-      <p>[] Crear componente de menu de PrintArea</p>
-      <p>[] tray tu split more PrintArea</p>
+      <p>[X] Crear componente de menu de PrintArea</p>
+      <p>[X] tray tu split more PrintArea</p>
     </div>
     <div>
       <p>se puede agregar como opciones</p>
