@@ -16,17 +16,27 @@ const SideBar = () => {
     {
       title:'Pedientes',
     },
+    {
+      title:'Default',
+    },
   ]
+  //Default
 
   const moreOptions = [
     {
       title:'Editar',
-    }
+    },
+    {
+      title:'PrintArea',
+    },
+    {
+      title:'Login',
+    },
   ]
 
   return (
     <section className={` ${
-      context?.area != "PrintArea" ? " " : "hidden"
+      (context?.area != "PrintArea" || context?.area != "Login" )? " " : "hidden"
     }`}>
       <section className="flex relative h-[520px]  w-[320px]  z-30 shadow-xl  flex-col justify-between border-e bg-white">
         <div className="px-4 py-6">
