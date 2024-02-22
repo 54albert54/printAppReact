@@ -37,9 +37,9 @@ const SideBar = () => {
             </li>
             <li>
               <button
-                onClick={() => context?.setArea("Print")}
+                onClick={() => context?.setArea("Llenar")}
                 className={`flex w-full ${
-                  context?.area == "Print" ? "bg-gray-200 " : ""
+                  context?.area == "Llenar" ? "bg-gray-200 " : ""
                 }  justify-start rounded-lg hover:bg-gray-200 px-4 py-2 text-sm font-medium text-gray-700`}
               >
                 Llenar

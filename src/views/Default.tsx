@@ -1,4 +1,4 @@
-import Context from "../context/provider";
+
 
 const Default =()=>{
 

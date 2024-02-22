@@ -4,8 +4,8 @@ import Context from "../context/provider";
 import { TDataToShow } from "../context/types";
 
 export default function MainTableView() {
-    const context = Context();
-    const [allData, setData] = useState<[TDataToShow]>(context?.data)
+    const context = Context() 
+    const [allData, setData] = useState<[TDataToShow]>(context.data)
 
     useEffect(() => {
 
@@ -13,19 +13,19 @@ export default function MainTableView() {
 
     }, [context?.data])
 
-    const filter =(filterBy)=>{
+    // const filter =(filterBy)=>{
 
-        switch (filterBy) {
-            case "id":
-            //as algo
+    //     switch (filterBy) {
+    //         case "id":
+    //         //as algo
                 
-                break;
+    //             break;
         
-            default:
-                break;
-        }
+    //         default:
+    //             break;
+    //     }
 
-    }
+    // }
 
     return (
         <MainTableHeater data={allData} />
@@ -35,7 +35,7 @@ export default function MainTableView() {
 function MainTableHeater({ data }) {
 
     return (
-        <section className="border-indigo-500 border rounded-md overflow-hidden p-[1px] bg-gray-400 min-h-[30%] max-h-[82%]">
+        <section className="border-indigo-500 border rounded-md overflow-hidden p-[1px] bg-gray-400  ">
 
             <ul className="  w-full flex flex-row justify-between  border shadow-sm font-semibold text-sm bg-white py-1 pl-6 ">
                 <li className="w-[50px] ">{'^'}</li>
@@ -47,7 +47,7 @@ function MainTableHeater({ data }) {
                 <li className="w-[360px] pl-6 ">Motivo</li>
 
             </ul>
-            <div className=" overflow-scroll border-t-2 border-indigo-500  scroll-smooth h-full">
+            <div className=" overflow-scroll h-[92%] border-t-2 border-indigo-500  scroll-smooth ">
                 {
                     data?.map((data, i) => (
                         <CellViews key={i + data.ID} element={data} idx={i} />

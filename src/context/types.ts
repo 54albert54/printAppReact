@@ -21,3 +21,19 @@ export interface TDataToShow{
   DetalleCantidad: 'mas letras de los numeros'
 
 }
+
+export type TContext = {
+  references: [TReference];
+  saveReferences: (e) => void;
+  eraseReferences: () => void;
+  area: string;
+  setArea: (a) => void;
+  dataToShow: TRealvalues[];
+  setDataToShow: (e) => void;
+
+  data: TDataToShow[];
+
+  saveDataInArchive: (e) => void;
+  printArea: boolean;
+  setPrintArea: (e: boolean) => void;
+};

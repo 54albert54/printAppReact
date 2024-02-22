@@ -8,7 +8,7 @@ const InfoReferencias = ({element ,ind}) => {
   
 
   const handleMouseDown = (event) => {
- 
+    
     
 
     setIsDragging(true);
@@ -33,21 +33,21 @@ const InfoReferencias = ({element ,ind}) => {
     referencias[ind].Top = `${position.y}`  
     setIsDragging(false);
   };
- 
+ //inline-flex items-center justify-center rounded-full bg-emerald-100 px-2.5 py-0.5 text-emerald-700
 
   return (
 
+
     <div
-    className={` absolute z-30 bg-blue-500 hover:bg-red-500 hover:cursor-pointer w-auto  pb-0 text-white px-4`}
+    className={` absolute ${isDragging ?"z-30" : "z10"}  border-2 border-blue-800 bg-blue-600 rounded-md active:bg-red-500 hover:border-red-800 hover:bg-red-600 hover:cursor-pointer w-auto  pb-0 font-normal text-sm  text-white px-4`}
    
     style={{
      
       
-      backgroundColor: 'blue',
+      
       
       top: position.y + 'px',
       left: position.x + 'px',
-      transition: 'background-color 0.3s ease',
       cursor: isDragging ? 'grabbing' : 'grab',
      
     }}

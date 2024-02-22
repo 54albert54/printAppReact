@@ -1,180 +1,124 @@
 import Context from "../context/provider";
 import { useEffect, useState } from "react";
-import imagenMuestra from "../../public/access/BanReservasBlank.jpeg";
 
-const SliceDate = ({date}) =>{
-  
-  const dataParts = date?.split(' ') //.map(ele => `<p>${ele}</p>`).join(" ");
-
-  return (
-    <div className="relative  w-[200px] flex justify-between">
-    {
-      dataParts?.map((ele) =>(
-        <p key={ele}>{ele}</p>
-      ))
-    }
-    </div>
-  )
-}
+import SliceDate from "../components/SliceDate";
+import CustomButton from "../UI/CustomButton";
+import ShowImgBlank from "../components/ShowImgBlank";
 
 
 
-let goProint = false
-let pressEnert = 0
-const PrintArea =()=>{
+let pressEnter = 0;
+const PrintArea = () => {
+  const [isVisible, setIsVisible] = useState(false);
   const context = Context();
-  
-  const handleKeyPress = (e)=>{
-    if (e.key === 'Enter' && goProint ){
-      console.log('print = '+goProint)
-      if (pressEnert > 1){
-     //   sendToPrint()
-        pressEnert = 0
-      }else{
-        pressEnert ++
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      if (pressEnter > 0) {
+        sendToPrint();
+
+        pressEnter = 0;
+      } else {
+        pressEnter++;
       }
-      
-    
-   
-  }
-  }
+    }
+  };
 
-useEffect(()=>{
-  
-  console.log(context?.area)
-  if (context?.area === "PrintArea" ){
-    goProint = true
-    console.log("estasssssssssssssssss ="+goProint)
+  useEffect(() => {
+    context.area == "PrintArea" ? setIsVisible(true) : setIsVisible(false);
 
-    window.addEventListener("keydown" , handleKeyPress)
-  }else{
-    goProint = false
-    console.log("no para print = "+goProint)
-    window.removeEventListener("keydown" , handleKeyPress)
-  }
- 
- 
-},[context?.area])
+    if (context.area === "PrintArea") {
+      window.addEventListener("keydown", handleKeyPress);
+    }
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+    };
+  }, [context.area]);
 
-  const styleRef = (element:string)=>{
-  
+  const styleRef = (element: string) => {
     switch (element) {
-      case 'ID':
-        return 'text-[20px]  '
+      case "ID":
+        return "text-[20px]  ";
         break;
-      case 'Fecha':
-        return ' !w-[100px] '
+      case "Fecha":
+        return " !w-[100px] ";
         break;
-      case 'DetalleCantidad':
-        return 'w-[700px]'
+      case "DetalleCantidad":
+        return "w-[700px]";
         break;
-      case 'NombreCliente':
-        return 'w-[400px]'
+      case "NombreCliente":
+        return "w-[400px]";
         break;
-      case 'motivo':
-        return 'w-[370px] '
+      case "motivo":
+        return "w-[370px] ";
         break;
-      case 'CantidadColilla':
-        return ' flex flex-row  w-[80px] '
+      case "CantidadColilla":
+        return " flex flex-row  w-[80px] ";
         break;
-      case 'Cantidad':
-        return ''
+      case "Cantidad":
+        return "";
         break;
-      case 'FechaColilla':
-        return 'w-[700px] ml-4'
+      case "FechaColilla":
+        return "w-[700px] ml-4";
         break;
-    
+
       default:
-        return 'bg-blue-500'
+        return "bg-blue-500";
         break;
     }
-  
-  }
-  const sendToPrint = ()=>{
-    context?.setArea("Home")
+  };
+  const sendToPrint = () => {
+    context?.setArea("Home");
     //window.print()
 
-    context?.saveDataInArchive(context?.dataToShow)
-    
+    context?.saveDataInArchive(context?.dataToShow);
+  };
 
-  }
- 
-
-
-
-
-
-  return(
+  return (
     <section
-    
-    className={`
-    ${
-      context?.area == "PrintArea" ? " " : "hidden"
-    }
-     absolute bg-white z-10 h-[90%]  w-screen flex justify-center `}>
-      <div>
-      <ul className="mt-6  absolute top-1 left-4 flex">
-            <li>
-              <button
-                onClick={() => context?.setArea("Home")}
-                className={`flex w-[100px] ml-8 bg-gray-200  justify-start rounded-lg hover:bg-gray-200 px-8 py-2 text-sm font-medium text-gray-700`}
-              //  className={`flex w-[100px] ml-8 bg-gray-200  justify-start rounded-lg hover:bg-gray-200 px-8 py-2 text-sm font-medium text-gray-700`}
-              >
-                Back
-              </button>
-      </li>
-      <li>
-              <button
-                onClick={sendToPrint}
-              
-                className={`flex w-[100px] ml-8 ${
-                  context?.area == "PrintArea" ? "bg-gray-200 " : ""
-                }  justify-start rounded-lg hover:bg-gray-200 px-8 py-2 text-sm font-medium text-gray-700`}
-              >
-                Print
-              </button>
-      </li>
-      </ul>
-
-      </div>
-      <div className="relative top-[-30px] left-8 z-20 t bg-red-800 w-400  ">
-        {
-          context?.references.map((element, id)=>(
-            (<div key={id}   style={{
-     
-      
-              
-              
-              top: element.Top + 'px',
-              left: (element.Left - 25) + 'px',
-              transition: 'background-color 0.3s ease',
-              // cursor: isDragging ? 'grabbing' : 'grab',
-             
-            }} className={`absolute ${styleRef(element.name)}`}> <p className="  flex justify-start ">
-            {element.name == 'Fecha' ?  <SliceDate date={context?.dataToShow[element.name]}/>  : context?.dataToShow[element.name]} 
+      className={`
+    ${isVisible ? " " : "hidden"}
+     absolute ease-in duration-300 bg-white z-10 h-[90%]  w-screen flex justify-center `}
+    >
+   
+        <ul className="mt-6  absolute top-1 left-4 flex">
+          <li>
+            <CustomButton title={'Back'} action={() => context?.setArea("Home")}/>
+        
+          </li>
+          <li>
+          <CustomButton title={'Print'} action={sendToPrint}/>
             
+          </li>
+        </ul>
+     
+      <div className="relative top-[-30px] left-8 z-20 t bg-red-800 w-400  ">
+        {context?.references.map((element, id) => (
+          <div
+            key={id}
+            style={{
+              top: element.Top + "px",
+              left: element.Left - 25 + "px",
+              transition: "background-color 0.3s ease",
+            }}
+            className={`absolute ${styleRef(element.name)}`}
+          >
+            {" "}
+            <p className="  flex justify-start ">
+              {element.name == "Fecha" ? (
+                <SliceDate date={context?.dataToShow[element.name]} />
+              ) : (
+                context?.dataToShow[element.name]
+              )}
             </p>
-            </div>
-             
-             )
-          ))
-        }
+          </div>
+        ))}
       </div>
 
-        <section>
-        <img
-        className="  z-40 w-[720px] h-[320px]"
-        id="imgMuestra"
-        src={imagenMuestra}
-        alt="hola"
-      />
-        </section>
-
-
-
+        <ShowImgBlank/>
       
     </section>
-    )
+  );
 };
 
-export default PrintArea; 
+export default PrintArea;

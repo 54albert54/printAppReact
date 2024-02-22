@@ -1,7 +1,8 @@
-import imagenMuestra from "../../public/access/BanReservasBlank.jpeg";
 
-import ActionsButons from "../components/AcrionsButons";
+
+import ActionsButtons from "../components/AcrionsButtons";
 import InfoReferencias from "../components/InfoReferencias";
+import ShowImgBlank from "../components/ShowImgBlank";
 import Context from "../context/provider";
 import { referencias } from "../context/storage";
 
@@ -18,10 +19,7 @@ const EditCheck = () => {
     context?.setArea("Home")
     context?.setArea("Home")
   };
-  // const printCheck = ()=>{
-  //     window.print()
-  // };
-  
+
 
   return (
     <main
@@ -34,23 +32,21 @@ const EditCheck = () => {
           Mueve las referencias.
         </h2>
       </div>
-      {/* <div className="  absolute top-0 left-0 z-30 bg-black h-full w-full"> </div> */}
+
       <div className=" flex flex-row gap-1 z-50  relative  top-12">
         {context?.references.map((ref, ind) => (
           <InfoReferencias key={ref.name + ind} ind={ind} element={ref} />
         ))}
       </div>
 
-      <img
-        className="mt-20 absolute  z-40 w-[720px] h-[320px]"
-        className="mt-20 absolute  z-40 w-[720px] h-[320px]"
-        id="imgMuestra"
-        src={imagenMuestra}
-        alt="hola"
-      />
-      {/* <InputSeccion /> */}
+      <section className=" mt-20 absolute ">
+      <ShowImgBlank/>
+      </section>
 
-      <ActionsButons eraserAllData={eraserAllData} saveAllData={saveAllData}  />
+      
+
+
+      <ActionsButtons eraserAllData={eraserAllData} saveAllData={saveAllData}  />
  
     </main>
   );

@@ -1,6 +1,6 @@
-import ModalAlert from "../components/ModalAlert";
+
 import SideBar from "../components/SideBar";
-import Default from "./Default";
+
 
 import EditCheck from "./Editar";
 import Home from "./Home";
