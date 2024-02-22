@@ -1,5 +1,6 @@
 
 
+import MainTitle from "../UI/MainTitle";
 import ActionsButtons from "../components/AcrionsButtons";
 import InfoReferencias from "../components/InfoReferencias";
 import ShowImgBlank from "../components/ShowImgBlank";
@@ -12,11 +13,9 @@ const EditCheck = () => {
   const saveAllData = () => {
     context?.saveReferences(referencias);
     context?.setArea("Home")
-    context?.setArea("Home")
   };
   const eraserAllData = () => {
     context?.eraseReferences();
-    context?.setArea("Home")
     context?.setArea("Home")
   };
 
@@ -28,9 +27,7 @@ const EditCheck = () => {
       }  relative  bg-backGround w-[860px] h-[520px] shadow-xl m-auto flex flex-col  justify-between px-12 pt-6`}
     >
       <div className="absolute top-4 left-0  w-full flex justify-center">
-        <h2 className="itemsToDisappear w-full text-center font-bold text-xl text-indigo-600">
-          Mueve las referencias.
-        </h2>
+      <MainTitle title={'Editar posiciones'}/>
       </div>
 
       <div className=" flex flex-row gap-1 z-50  relative  top-12">
