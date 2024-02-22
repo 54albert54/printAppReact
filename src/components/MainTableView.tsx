@@ -47,7 +47,7 @@ function MainTableHeater({ data }) {
                 <li className="w-[360px] pl-6 ">Motivo</li>
 
             </ul>
-            <div className=" overflow-scroll h-[92%] border-t-2 border-indigo-500  scroll-smooth ">
+            <div className=" overflow-y-scroll overflow-x-hidden h-[92%] border-t-2 border-indigo-500  scroll-smooth ">
                 {
                     data?.map((data, i) => (
                         <CellViews key={i + data.ID} element={data} idx={i} />

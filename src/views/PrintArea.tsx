@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import SliceDate from "../components/SliceDate";
 import CustomButton from "../UI/CustomButton";
 import ShowImgBlank from "../components/ShowImgBlank";
+import MenuButtons from "../UI/MenuButton";
+import PrintReferencias from "../components/PrintReferencias";
 
 
 
@@ -73,6 +75,21 @@ const PrintArea = () => {
 
     context?.saveDataInArchive(context?.dataToShow);
   };
+  const goBack = ()=>{
+    context?.setArea("Home")
+
+  }
+  const buttonForPrintArea = [
+    {
+      title:'Back',
+      action:goBack
+    },
+    {
+      title:'Print',
+      action:sendToPrint
+    }
+
+  ]
 
   return (
     <section
@@ -80,38 +97,10 @@ const PrintArea = () => {
     ${isVisible ? " " : "hidden"}
      absolute ease-in duration-300 bg-white z-10 h-[90%]  w-screen flex justify-center `}
     >
+      <MenuButtons allButtons={buttonForPrintArea} />
    
-        <ul className="mt-6  absolute top-1 left-4 flex">
-          <li>
-            <CustomButton title={'Back'} action={() => context?.setArea("Home")}/>
-        
-          </li>
-          <li>
-          <CustomButton title={'Print'} action={sendToPrint}/>
-            
-          </li>
-        </ul>
-     
-      <div className="relative top-[-30px] left-8 z-20 t bg-red-800 w-400  ">
-        {context?.references.map((element, id) => (
-          <div
-            key={id}
-            style={{
-              top: element.Top + "px",
-              left: element.Left - 25 + "px",
-            }}
-            className={`absolute ${styleRef(element.name)}`}
-          >
-            <p className="  flex justify-start ">
-              {element.name == "Fecha" ? (
-                <SliceDate date={context?.dataToShow[element.name]} />
-              ) : (
-                context?.dataToShow[element.name]
-              )}
-            </p>
-          </div>
-        ))}
-      </div>
+     <PrintReferencias styleRef={styleRef}/>
+   
 
         <ShowImgBlank/>
       
