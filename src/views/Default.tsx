@@ -1,15 +1,27 @@
+import { useEffect, useState } from "react";
+import Context from "../context/provider";
+import MainTitle from "../UI/MainTitle";
 
 
 const Default =()=>{
+  const [isVisible , setIsVisible ] = useState(false)
+  const context = Context();
 
+  useEffect(()=>{
+
+    
+    context.area == 'Default' ? setIsVisible(true) : setIsVisible(false)
+    
+  },[context.area])
 
   return(
-    <main className={` relative z-10 bg-red-700   top-6 w-[860px] h-[90%]  opacity-20  shadow-xl m-auto flex flex-col  justify-between px-12 pt-6`}>
-      <h2 className="itemsToDisappear w-full text-center font-bold pb-20 text-xl text-indigo-600" >Estas en Default</h2>
-
+    <main className={` ${isVisible ? " " :'hidden'}
+     relative ease-in duration-300 bg-backGround w-[860px] h-[520px] z-20 shadow-xl m-auto flex flex-col   px-12 pt-6`}>
+      <MainTitle title={'Default'}/>
 
     </main>
     )
 };
 
 export default Default; 
+
