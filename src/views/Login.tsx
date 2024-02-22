@@ -3,20 +3,20 @@ import MainTitle from "../UI/MainTitle";
 import AreaView from "../UI/AreaView";
 
 
-const Default =()=>{
+const Login =()=>{
  
 
   
 
   return(
-    <AreaView area={"Default"}>
+    <AreaView area={"Login" } fullScren>
     
-      <MainTitle title={'Default'}/>
+      <MainTitle title={'Login'}/>
       <p>desde mi defaul</p>
 
     </AreaView>
     )
 };
 
-export default Default; 
+export default Login; 
 

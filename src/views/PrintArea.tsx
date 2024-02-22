@@ -6,12 +6,13 @@ import CustomButton from "../UI/CustomButton";
 import ShowImgBlank from "../components/ShowImgBlank";
 import MenuButtons from "../UI/MenuButton";
 import PrintReferencias from "../components/PrintReferencias";
+import AreaView from "../UI/AreaView";
 
 
 
 let pressEnter = 0;
 const PrintArea = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  
   const context = Context();
 
   const handleKeyPress = (e) => {
@@ -27,7 +28,7 @@ const PrintArea = () => {
   };
 
   useEffect(() => {
-    context.area == "PrintArea" ? setIsVisible(true) : setIsVisible(false);
+    
 
     if (context.area === "PrintArea") {
       window.addEventListener("keydown", handleKeyPress);
@@ -92,11 +93,7 @@ const PrintArea = () => {
   ]
 
   return (
-    <section
-      className={`
-    ${isVisible ? " " : "hidden"}
-     absolute ease-in duration-300 bg-white z-10 h-[90%]  w-screen flex justify-center `}
-    >
+    <AreaView area={"PrintArea"} fullScren>
       <MenuButtons allButtons={buttonForPrintArea} />
    
      <PrintReferencias styleRef={styleRef}/>
@@ -104,8 +101,11 @@ const PrintArea = () => {
 
         <ShowImgBlank/>
       
-    </section>
+    </AreaView>
   )
 }
 
 export default PrintArea;
+
+
+

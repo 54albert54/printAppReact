@@ -1,8 +1,24 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import InputComponent from "./InputComponent";
+import Context from "../context/provider"
 
-const FormCheck = ({ checkAllCampos, sendValues, isVisible }) => {
+const FormCheck = ({ checkAllCampos, sendValues }) => {
   const inputRefs = [useRef(null), useRef(null), useRef(null)]; // Puedes agregar más useRef para más inputs
+  const [isVisible , setIsVisible ] = useState(false)
+  const context = Context();
+
+
+    useEffect(()=>{
+
+    
+      context.area == 'Llenar' ? setIsVisible(true) : setIsVisible(false)
+      
+    },[context.area])
+  
+  
+  
+  
+  
   const inputDetails = [
     { name: "clientName", placeholder: "Nombre del cliente" },
     { name: "motivo", placeholder: "Motivo de pago" },
