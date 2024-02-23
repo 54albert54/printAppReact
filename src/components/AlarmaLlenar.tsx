@@ -1,7 +1,7 @@
 const AlarmaLlenar =({alerts})=>{
 
   return(
-    <div className="   h-12 text-red-500 mb-4 text-[12px] ">
+    <div className="   h-12 text-red-500 mb-4 text-[12px] p-6 ">
       {
         alerts.map((alert )=>(
           <p

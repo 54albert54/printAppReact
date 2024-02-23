@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import Context from "../context/provider";
+import {  useRef, useState } from "react";
+import useContext from "../context/provider";
 import AreaView from "../UI/AreaView"
 import MainTitle from "../UI/MainTitle"
 
@@ -20,7 +20,7 @@ import FormCheck from "../components/FormCheck";
 
 const Llenar = () => {
  
-  const context = Context();
+  const context = useContext();
   const [alertas, setAlerta] = useState({
     motivoValido: false,
     monto: false,
@@ -166,17 +166,28 @@ const Llenar = () => {
     },
   ];
 
+  const inputRefs = [useRef(null), useRef(null), useRef(null)]; // Puedes agregar más useRef para más inputs
+  const inputDetails = [
+    { name: "clientName", placeholder: "Nombre del cliente" },
+    { name: "motivo", placeholder: "Motivo de pago" },
+    { name: "monto", placeholder: "Cantidad a pagar" },
+  ];
+
+
   return (
     <AreaView area={"Llenar"}>
       <MainTitle title={'Edita'}/>
 
-      <AlarmaLlenar alerts={AllAlerts} />
-
+      
       <FormCheck
-     
+        formFor={'Llenar'}    
+        inputRefs={inputRefs} 
+        inputDetails={inputDetails}
         checkAllCampos={checkAllCampos}
         sendValues={sendValues}
       />
+      <AlarmaLlenar alerts={AllAlerts} />
+
 
       <div className="absolute bottom-0 z-20   left-6 h-24 flex flex-row justify-center items-center gap-12  max-w-[760px] w-screen m-auto">
         <IconButton action={sendValues} title={"Print"} />

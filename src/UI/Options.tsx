@@ -1,7 +1,7 @@
-import Context from "../context/provider.jsx"
+import useContext from "../context/provider.jsx"
 
 const Options =({title })=>{
-  const context = Context()
+  const context = useContext()
   
   
 

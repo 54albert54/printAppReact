@@ -1,18 +1,28 @@
 
-import MainTitle from "../UI/MainTitle";
+
 import AreaView from "../UI/AreaView";
 
 
+import LoginForm from "../components/LoginForm.jsx";
+
 const Login =()=>{
+
  
+
+ 
+    
 
   
 
   return(
-    <AreaView area={"Login" } fullScren>
+    <AreaView area={"Login" } fullScreen>
     
-      <MainTitle title={'Login'}/>
-      <p>desde mi defaul</p>
+      
+      
+     
+      <LoginForm/>
+
+      
 
     </AreaView>
     )

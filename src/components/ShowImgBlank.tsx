@@ -5,7 +5,7 @@ const ShowImgBlank =()=>{
   return(
     <figure>
     <img
-      className="  z-40 w-[720px] h-[320px]"
+      className="relative  z-0 w-[720px] h-[320px]"
       id="imgMuestra"
       src={imagenMuestra}
       alt="hola"

@@ -13,19 +13,6 @@ export default function MainTableView() {
 
     }, [context?.data])
 
-    // const filter =(filterBy)=>{
-
-    //     switch (filterBy) {
-    //         case "id":
-    //         //as algo
-                
-    //             break;
-        
-    //         default:
-    //             break;
-    //     }
-
-    // }
 
     return (
         <MainTableHeater data={allData} />
@@ -35,7 +22,7 @@ export default function MainTableView() {
 function MainTableHeater({ data }) {
 
     return (
-        <section className="border-indigo-500 border rounded-md overflow-hidden p-[1px] bg-gray-400  ">
+        <section className="border-black border rounded-md overflow-hidden p-[1px] bg-gray-400  ">
 
             <ul className="  w-full flex flex-row justify-between  border shadow-sm font-semibold text-sm bg-white py-1 pl-6 ">
                 <li className="w-[50px] ">{'^'}</li>
@@ -47,7 +34,7 @@ function MainTableHeater({ data }) {
                 <li className="w-[360px] pl-6 ">Motivo</li>
 
             </ul>
-            <div className=" overflow-y-scroll overflow-x-hidden h-[92%] border-t-2 border-indigo-500  scroll-smooth ">
+            <div className=" overflow-y-scroll overflow-x-hidden h-[92%] border-t-2 border-gray-500 scroll-smooth ">
                 {
                     data?.map((data, i) => (
                         <CellViews key={i + data.ID} element={data} idx={i} />

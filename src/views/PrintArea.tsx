@@ -1,25 +1,19 @@
-import Context from "../context/provider";
+import useContext from "../context/provider";
 import { useEffect, useState } from "react";
 
-import SliceDate from "../components/SliceDate";
-import CustomButton from "../UI/CustomButton";
 import ShowImgBlank from "../components/ShowImgBlank";
 import MenuButtons from "../UI/MenuButton";
 import PrintReferencias from "../components/PrintReferencias";
 import AreaView from "../UI/AreaView";
 
-
-
 let pressEnter = 0;
 const PrintArea = () => {
-  
-  const context = Context();
-
+  const context = useContext();
+  const [readyToPrint, setReadyToPrint] = useState(false);
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       if (pressEnter > 0) {
         sendToPrint();
-
         pressEnter = 0;
       } else {
         pressEnter++;
@@ -28,8 +22,6 @@ const PrintArea = () => {
   };
 
   useEffect(() => {
-    
-
     if (context.area === "PrintArea") {
       window.addEventListener("keydown", handleKeyPress);
     }
@@ -38,74 +30,98 @@ const PrintArea = () => {
     };
   }, [context.area]);
 
-  const styleRef = (element: string) => {
-    switch (element) {
-      case "ID":
-        return "text-[20px]  ";
-        break;
-      case "Fecha":
-        return " !w-[100px] ";
-        break;
-      case "DetalleCantidad":
-        return "w-[700px]";
-        break;
-      case "NombreCliente":
-        return "w-[400px]";
-        break;
-      case "motivo":
-        return "w-[370px] ";
-        break;
-      case "CantidadColilla":
-        return " flex flex-row  w-[80px] ";
-        break;
-      case "Cantidad":
-        return "";
-        break;
-      case "FechaColilla":
-        return "w-[700px] ml-4";
-        break;
+  const sendToPrint = () => {
+    if (context?.dataToShow.Cantidad) {
+      setReadyToPrint(true)
+       
+      setTimeout(()=>{
 
-      default:
-        return "bg-blue-500";
-        break;
+        window.print()
+        context?.saveDataInArchive(context?.dataToShow);
+        
+        context?.setDataToShow({
+          centavos: "",
+          monto: "",
+          clientName: "",
+        });
+        context?.setArea("Llenar");
+        setTimeout(() => {
+         
+        
+          setReadyToPrint(false)
+        }, 300);
+
+
+      },500)
+     
+    } else {
+      context?.setArea("Llenar");
     }
   };
-  const sendToPrint = () => {
+
+  const goBack = () => {
     context?.setArea("Home");
-    //window.print()
-
-    context?.saveDataInArchive(context?.dataToShow);
   };
-  const goBack = ()=>{
-    context?.setArea("Home")
-
-  }
   const buttonForPrintArea = [
     {
-      title:'Back',
-      action:goBack
+      title: "Back",
+      action: goBack,
     },
     {
-      title:'Print',
-      action:sendToPrint
-    }
-
-  ]
+      title: "Print",
+      action: sendToPrint,
+    },
+  ];
 
   return (
-    <AreaView area={"PrintArea"} fullScren>
-      <MenuButtons allButtons={buttonForPrintArea} />
-   
-     <PrintReferencias styleRef={styleRef}/>
-   
-
-        <ShowImgBlank/>
+    <AreaView area={"PrintArea"} fullScreen>
+    <div className=" relative w-[720px] h-[320px]">
+      <PrintReferencias styleRef={styleRef} />
       
+    </div>
+
+
+      <div className={`absolute ${readyToPrint ? "hidden" : ""}`}>
+        <div className="relative  top-[360px] left-48 ">
+          <MenuButtons allButtons={buttonForPrintArea} />
+        </div>
+        <ShowImgBlank />
+      </div>
     </AreaView>
-  )
-}
+  );
+};
 
 export default PrintArea;
 
+const styleRef = (element: string) => {
+  switch (element) {
+    case "ID":
+      return "text-[20px]  ";
+      break;
+    case "Fecha":
+      return " !w-[100px] ";
+      break;
+    case "DetalleCantidad":
+      return "w-[700px]";
+      break;
+    case "NombreCliente":
+      return "w-[400px]";
+      break;
+    case "motivo":
+      return "w-[370px] ";
+      break;
+    case "CantidadColilla":
+      return " flex flex-row  w-[80px] ";
+      break;
+    case "Cantidad":
+      return "";
+      break;
+    case "FechaColilla":
+      return "w-[700px] ml-4";
+      break;
 
-
+    default:
+      return "bg-blue-500";
+      break;
+  }
+};

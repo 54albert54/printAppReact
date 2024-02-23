@@ -1,10 +1,10 @@
-import Context from "../context/provider";
+//import Context from "../context/provider";
 
 export default function MainTitle({title}){
 
     return(
         <section>
-              <h2 className="itemsToDisappear w-full text-center font-bold pb-20 text-xl text-indigo-600" >
+              <h2 className="itemsToDisappear w-full text-center font-bold pb-10 text-xl text-indigo-600" >
               {title}
               </h2>
         

@@ -5,11 +5,11 @@ import MainTitle from "../UI/MainTitle";
 import ActionsButtons from "../components/AcrionsButtons";
 import InfoReferencias from "../components/InfoReferencias";
 import ShowImgBlank from "../components/ShowImgBlank";
-import Context from "../context/provider";
+import useContext from "../context/provider";
 import { referencias } from "../context/storage";
 
 const EditCheck = () => {
-  const context = Context();
+  const context = useContext();
 
   const saveAllData = () => {
     context?.saveReferences(referencias);
@@ -29,7 +29,7 @@ const EditCheck = () => {
       </div>
 
       <div className=" flex flex-row gap-1 z-50  relative  top-12">
-        {context?.references.map((ref, ind) => (
+        {context?.references?.map((ref, ind) => (
           <InfoReferencias key={ref.name + ind} ind={ind} element={ref} />
         ))}
       </div>

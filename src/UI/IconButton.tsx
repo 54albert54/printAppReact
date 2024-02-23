@@ -19,7 +19,7 @@ export default IconButton;
 const MyIcon = ({icon})=>{
 
   return(
-    <>
+    <p>
       {
         icon == 'Saved' && (
           <svg
@@ -90,6 +90,6 @@ const MyIcon = ({icon})=>{
     
     
     
-    </>
+    </p>
   )
 }

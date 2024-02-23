@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       colors:{
-        'backGround':'#f1ffff'
+        'backGround':'#e9ebea'
       }
     },
   },

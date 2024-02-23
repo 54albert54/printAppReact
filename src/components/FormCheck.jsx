@@ -1,9 +1,13 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect , useState } from "react";
 import InputComponent from "./InputComponent";
 import Context from "../context/provider"
 
-const FormCheck = ({ checkAllCampos, sendValues }) => {
-  const inputRefs = [useRef(null), useRef(null), useRef(null)]; // Puedes agregar más useRef para más inputs
+const FormCheck = ({formFor,inputRefs,inputDetails, checkAllCampos, sendValues  ,password}) => {
+  
+  
+  
+  
+  
   const [isVisible , setIsVisible ] = useState(false)
   const context = Context();
 
@@ -11,7 +15,7 @@ const FormCheck = ({ checkAllCampos, sendValues }) => {
     useEffect(()=>{
 
     
-      context.area == 'Llenar' ? setIsVisible(true) : setIsVisible(false)
+      context.area == formFor ? setIsVisible(true) : setIsVisible(false)
       
     },[context.area])
   
@@ -19,11 +23,7 @@ const FormCheck = ({ checkAllCampos, sendValues }) => {
   
   
   
-  const inputDetails = [
-    { name: "clientName", placeholder: "Nombre del cliente" },
-    { name: "motivo", placeholder: "Motivo de pago" },
-    { name: "monto", placeholder: "Cantidad a pagar" },
-  ];
+ 
 
   useEffect(() => {
     inputRefs[0].current.focus();
@@ -48,7 +48,6 @@ const FormCheck = ({ checkAllCampos, sendValues }) => {
   return (
     <form
       className="flex w-full gap-8 flex-col   "
-      onSubmit={() => console.log("se dio summier")}
     >
       {inputRefs.map((inputRef, index) => (
         <InputComponent
@@ -58,6 +57,7 @@ const FormCheck = ({ checkAllCampos, sendValues }) => {
           checkAllCampos={checkAllCampos}
           inputRef={inputRef}
           handleKeyDown={handleKeyDown}
+          password={password}
         />
       ))}
     </form>

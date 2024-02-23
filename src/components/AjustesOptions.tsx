@@ -1,6 +1,7 @@
 import Options from "../UI/Options";
-
+import useContext from "../context/provider";
 const AjustesOptions = ({ moreOptions }) => {
+  const context = useContext();
   return (
     <details className="group [&_summary::-webkit-details-marker]:hidden">
       <summary className="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-gray-700">
@@ -28,7 +29,7 @@ const AjustesOptions = ({ moreOptions }) => {
       
         {
         moreOptions.map((option )=>(
-          <Options key={option.title}  title={option.title}/>
+          option.access.includes(context?.auth?.role) && <Options key={option.title}  title={option.title}/>
         ))
         }
          

@@ -7,23 +7,80 @@ import { pruebaCheck, referencias } from "./storage";
 
 
 const CheckContext = createContext({})
+  //admin','cliente
+const users =[ 
+  {
+  userName:'---',
+  name:"---",
+  role:"admin",
+  detail:'Todas las vistas',
+  password:'---',
+  img:'---'
+},
+{
+  userName:'admin',
+  name:"ADMIN",
+  role:"admin",
+  detail:'Todas las vistas',
+  password:'asdf',
+  img:'https://png.pngtree.com/png-vector/20190118/ourmid/pngtree-user-vector-icon-png-image_328702.jpg'
+},
+{
+  userName:'cliente',
+  name:"cliente",
+  role:"cliente",
+  detail:'acceso limitado',
+  password:'asdf',
+  img:'https://www.speak2university.com/assets/admin/dist/img/user-avatar.png'
+},
+
+
+]
 
 export const CheckContextProvider = ({ children }) => {
   const [references, setReferences] = useState(referencias);
-  const [area, setArea] = useState("Home");
+  const [area, setArea] = useState("Login");
   const [printArea, setPrintArea] = useState(false);
+  const [auth ,setAuth] = useState(users[0]);
+  //datos que se llenan con el form
   const [dataToShow, setDataToShow] = useState({
     centavos: "",
     monto: "",
     clientName: "",
   });
+  //data a presentar en la tabla
   const [data, setData] = useState(pruebaCheck);
 
   const saveDataInArchive = (newCheck) => {
     const newData = [...data, newCheck];
     setData(newData);
-
   };
+  const login = (datoUser)=>{
+    let result = ''
+
+   const user = users.find(user => user.userName === datoUser.userName)
+
+    if(user){
+      if(user.password == datoUser.password ){
+        result ='successfulLogin'
+        setAuth(user)
+        setArea('Home')
+      }else{
+        result = 'wrongPassword'
+      }
+
+    }else{
+      result = 'usuarioNoFounded'
+    }
+    return result
+    //
+  }
+  const logout = ()=>{
+    setAuth(null)
+    setArea('Login')
+    console.log('me voy');
+    
+  }
 
   const saveReferences = (newReferences) => {
     setReferences(newReferences);
@@ -46,6 +103,7 @@ export const CheckContextProvider = ({ children }) => {
     saveDataInArchive,
     printArea,
     setPrintArea,
+    auth , login , logout
   };
 
   return (
@@ -53,6 +111,6 @@ export const CheckContextProvider = ({ children }) => {
   );
 };
 
-const Context = () => useContext(CheckContext);
+const MyContext = () => useContext(CheckContext);
 
-export default Context;
+export default MyContext;

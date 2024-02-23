@@ -4,7 +4,7 @@ const SliceDate = ({ date }) => {
   return (
     <div className="relative  w-[200px] flex justify-between">
       {dataParts?.map((ele, i) => (
-        <p key={ele + i}>{ele}</p>
+        <p key={i}>{ele} </p>
       ))}
     </div>
   );
