@@ -5,6 +5,7 @@ import ShowImgBlank from "../components/ShowImgBlank";
 import MenuButtons from "../UI/MenuButton";
 import PrintReferencias from "../components/PrintReferencias";
 import AreaView from "../UI/AreaView";
+import db from '../context/db/mySql.js'
 
 let pressEnter = 0;
 const PrintArea = () => {
@@ -36,9 +37,9 @@ const PrintArea = () => {
        
       setTimeout(()=>{
 
-        window.print()
-        context?.saveDataInArchive(context?.dataToShow);
-        
+        // window.print()
+        // context?.saveDataInArchive(context?.dataToShow);
+        db.putData(context?.dataToShow)
         context?.setDataToShow({
           centavos: "",
           monto: "",

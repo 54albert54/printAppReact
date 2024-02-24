@@ -37,3 +37,12 @@ export type TContext = {
   printArea: boolean;
   setPrintArea: (e: boolean) => void;
 };
+
+export interface TCheckList{
+  checkId:number
+clientName :string
+amount:number
+reason :string
+dateCreated :string
+isActive: 1 | 0
+}

@@ -1,21 +1,55 @@
 import { useEffect, useState } from "react";
 import CellViews from "./CellViews";
 import Context from "../context/provider";
-import { TDataToShow } from "../context/types";
+import { TCheckList } from "../context/types";
+const { ipcRenderer } = window.require('electron');
+import { channels } from '../../constants.js';
+import db from '../context/db/mySql.js'
 
 export default function MainTableView() {
     const context = Context() 
-    const [allData, setData] = useState<[TDataToShow]>(context.data)
+    // const [allData, setAllData] = useState<[TDataToShow]>(context.data)
+    const [dataDB, setDataDB] = useState<null | TCheckList[]>([]) ;
+    
+    console.log('data',dataDB);
+    
+    useEffect(()=>{
+        db.sendData('mera prueba')
+        ipcRenderer.on(channels.GET_DATA, async ( _ ,arg) => {
+          
+            
+            console.log('inicio >>>>');
+            
+            setDataDB(arg) 
+         
+          });
+        
+            
+      
+          
+         
+          // Clean the listener after the component is dismounted
+          return () => {
+            ipcRenderer.removeAllListeners();
+          };
 
-    useEffect(() => {
+    },[context?.area])
 
-        setData(context?.data)
 
-    }, [context?.data])
+
+
+
+
+//! Para cuando se esta en local
+    // useEffect(() => {
+
+    //     setAllData(context?.data)
+
+    // }, [context?.data])
 
 
     return (
-        <MainTableHeater data={allData} />
+        <MainTableHeater data={dataDB} />
     )
 }
 

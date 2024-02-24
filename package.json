@@ -5,6 +5,7 @@
   "type": "module",
   "main": "main.js",
   "scripts": {
+    "start:electron": "ELECTRON_START_URL=http://localhost:3000 electron .",
     "deve": "  electron .",
     "dev": "vite",
     "build": "tsc && vite build",
@@ -13,6 +14,8 @@
     "pack": "electron-builder  "
   },
   "dependencies": {
+    "express": "^4.18.2",
+    "mysql2": "^3.9.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.1"

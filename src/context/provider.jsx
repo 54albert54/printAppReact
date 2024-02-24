@@ -39,7 +39,7 @@ const users =[
 
 export const CheckContextProvider = ({ children }) => {
   const [references, setReferences] = useState(referencias);
-  const [area, setArea] = useState("Login");
+  const [area, setArea] = useState("Home");
   const [printArea, setPrintArea] = useState(false);
   const [auth ,setAuth] = useState(users[0]);
   //datos que se llenan con el form
