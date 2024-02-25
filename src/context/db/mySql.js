@@ -1,4 +1,12 @@
-const { ipcRenderer } = window.require('electron');
+
+import configApp from "../config/index.js"
+let ipcRenderer
+
+if (configApp.idDev){
+  ipcRenderer = window.require('electron');
+}
+
+//const { ipcRenderer } = window.require('electron');
 import { channels } from '../../../constants.js';
 
 

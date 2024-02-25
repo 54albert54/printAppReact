@@ -5,7 +5,10 @@ import ShowImgBlank from "../components/ShowImgBlank";
 import MenuButtons from "../UI/MenuButton";
 import PrintReferencias from "../components/PrintReferencias";
 import AreaView from "../UI/AreaView";
-import db from '../context/db/mySql.js'
+import configApp from "../context/config"
+ import db from '../context/db/mySql.js'
+ import {Area} from '../context/types.ts'
+
 
 let pressEnter = 0;
 const PrintArea = () => {
@@ -21,9 +24,27 @@ const PrintArea = () => {
       }
     }
   };
+  const reformData = (newData)=>{
+
+    const dataToSave = {
+      checkId:context.nextID,
+      clientName: newData.NombreCliente,
+      amount: newData.Cantidad,
+      reason: newData.motivo,
+      dateCreated: newData.FechaColilla,
+      isActive: 1,
+    };
+
+    context?.saveDataInArchive(dataToSave)
+
+
+
+
+
+  }
 
   useEffect(() => {
-    if (context.area === "PrintArea") {
+    if (context.area === Area.PRINT_AREA) {
       window.addEventListener("keydown", handleKeyPress);
     }
     return () => {
@@ -38,14 +59,14 @@ const PrintArea = () => {
       setTimeout(()=>{
 
         // window.print()
-        // context?.saveDataInArchive(context?.dataToShow);
-        db.putData(context?.dataToShow)
+   
+        configApp.idDev ? db.putData(context?.dataToShow) : reformData(context?.dataToShow)
         context?.setDataToShow({
           centavos: "",
           monto: "",
           clientName: "",
         });
-        context?.setArea("Llenar");
+        context?.setArea(Area.HOME);
         setTimeout(() => {
          
         
@@ -56,12 +77,15 @@ const PrintArea = () => {
       },500)
      
     } else {
-      context?.setArea("Llenar");
+      context?.setArea(Area.LLENAR);
     }
   };
 
   const goBack = () => {
-    context?.setArea("Home");
+    context?.setArea(Area.LLENAR);
+  
+
+
   };
   const buttonForPrintArea = [
     {

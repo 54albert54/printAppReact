@@ -46,3 +46,14 @@ reason :string
 dateCreated :string
 isActive: 1 | 0
 }
+
+export const Area = {
+  HOME: 'Home',
+  LLENAR: 'Llenar',
+  PENDIENTE:'Pendiente',
+  DEFAULT:'Default',
+  EDITAR:'Editar',
+  PRINT_AREA:'PrintArea',
+  LOGIN:'Login',
+  DB_LOGIN:'DBLogin'
+}

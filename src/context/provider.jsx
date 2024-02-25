@@ -42,6 +42,7 @@ export const CheckContextProvider = ({ children }) => {
   const [area, setArea] = useState("Home");
   const [printArea, setPrintArea] = useState(false);
   const [auth ,setAuth] = useState(users[0]);
+  const [nextID , setNextID] = useState(0)
   //datos que se llenan con el form
   const [dataToShow, setDataToShow] = useState({
     centavos: "",
@@ -50,6 +51,21 @@ export const CheckContextProvider = ({ children }) => {
   });
   //data a presentar en la tabla
   const [data, setData] = useState(pruebaCheck);
+
+
+  const calculateNextID = (data)=>{
+    const onlyIds = data.reduce((acu,ele)=>{
+      return acu > ele.checkId ?acu : ele.checkId
+    }
+     
+    ,0)
+  
+    setNextID(onlyIds+ 1)
+
+
+
+
+  }
 
   const saveDataInArchive = (newCheck) => {
     const newData = [...data, newCheck];
@@ -103,7 +119,9 @@ export const CheckContextProvider = ({ children }) => {
     saveDataInArchive,
     printArea,
     setPrintArea,
-    auth , login , logout
+    auth , login , logout,
+    nextID ,calculateNextID
+
   };
 
   return (

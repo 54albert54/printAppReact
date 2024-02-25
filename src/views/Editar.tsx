@@ -7,22 +7,23 @@ import InfoReferencias from "../components/InfoReferencias";
 import ShowImgBlank from "../components/ShowImgBlank";
 import useContext from "../context/provider";
 import { referencias } from "../context/storage";
+import {Area} from '../context/types.ts'
 
 const EditCheck = () => {
   const context = useContext();
 
   const saveAllData = () => {
     context?.saveReferences(referencias);
-    context?.setArea("Home")
+    context?.setArea(Area.HOME)
   };
   const eraserAllData = () => {
     context?.eraseReferences();
-    context?.setArea("Home")
+    context?.setArea(Area.HOME)
   };
 
 
   return (
-    <AreaView area={"Editar"}>
+    <AreaView area={Area.EDITAR}>
   
       <div className="absolute top-4 left-0  w-full flex justify-center">
       <MainTitle title={'Editar posiciones'}/>

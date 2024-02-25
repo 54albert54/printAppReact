@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import useContext from "../context/provider";
+import { Area } from '../context/types'
 
 export default function AreaView({ children, area, fullScreen = false }) {
   const context = useContext();
@@ -14,7 +15,7 @@ export default function AreaView({ children, area, fullScreen = false }) {
       className={` ${isVisible ? "z-20" : "z-0 hidden"}      ${
         fullScreen
           ? `   z-10 h-[800px]  w-[1200px] mx-auto flex  ${
-              context.area == "Login"
+              context.area == Area.LOGIN
                 ? "!h-screen !w-screen bg-backGround fixed flex-col items-center"
                 : "justify-center bg-white"
             }`

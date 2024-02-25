@@ -60,6 +60,7 @@ const FormCheck = ({formFor,inputRefs,inputDetails, checkAllCampos, sendValues  
           password={password}
         />
       ))}
+     
     </form>
   );
 };

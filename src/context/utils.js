@@ -47,7 +47,7 @@ export function convertirNumeroEnPalabras(numero) {
     "ochocientos",
     "novecientos",
   ];
-  const posiciones = ["", "mil", "millón", "mil millones"]; // Puedes extender este arreglo para números más grandes si es necesario
+  const posiciones = ["", "mil", "millones", "mil millones"]; // Puedes extender este arreglo para números más grandes si es necesario
 
   const grupoTresDigitos = (str) => {
     const num = parseInt(str);
@@ -86,9 +86,22 @@ export function convertirNumeroEnPalabras(numero) {
 
   const resultado = partes.reverse().map((parte, idx) => {
     const partePalabras = grupoTresDigitos(parte);
+   
+    
     return partePalabras + " " + posiciones[idx];
   });
 
+  if (resultado[2]?.includes('uno millones')){
+   resultado[2]= 'un millón'
+    
+  }
+  if (resultado[1]?.length < 5){
+    resultado[1] = " "
+  }
+
+  
+
+  
   return resultado.reverse().join(" ").trim();
 }
 
@@ -117,7 +130,10 @@ export function setFecha(){
   const mes = fechaActual.getMonth() + 1; // El mes es devuelto en base 0 (enero es 0)
   const año = fechaActual.getFullYear();
 
-  return `${dia} ${mes} ${año}`
+  const add0=(date) =>( date < 10 ? `0${date}`:date )
+  
+
+  return `${add0(dia)} ${add0(mes)} ${año}`
 }
 
 export function setFechaColilla(){
@@ -127,7 +143,8 @@ export function setFechaColilla(){
   const dia = fechaActual.getDate();
   const mes = fechaActual.getMonth() + 1; // El mes es devuelto en base 0 (enero es 0)
   const año = fechaActual.getFullYear();
+  const add0=(date) =>( date < 10 ? `0${date}`:date )
 
-  return `${dia}/${mes}/${año}`
+  return `${add0(dia)}/${add0(mes)}/${año}`
 
 }

@@ -17,7 +17,7 @@ export default function PrintReferencias ({styleRef}){
             className={`absolute  ${styleRef(element.name)}`}
           >
             <p className="  flex justify-start ">
-              {element.name == "Fecha" ? (
+              {element.name == "Fecha"  ? (
                 <SliceDate date={context?.dataToShow[element.name]} />
               ) : (
                 context?.dataToShow[element.name]

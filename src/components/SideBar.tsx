@@ -3,6 +3,7 @@ import Options from "../UI/Options";
 import PerfilPreview from "../UI/PerfilPreview";
 import useContext from "../context/provider";
 import AjustesOptions from "./AjustesOptions";
+import {Area} from '../context/types.ts'
 
 const SideBar = () => {
   const context = useContext();
@@ -13,25 +14,25 @@ const SideBar = () => {
 
       
       
-    context.area != "PrintArea" && context.area != "Login" ? setIsVisible(true) : setIsVisible(false)
+    context.area != Area.PRINT_AREA && context.area != Area.LOGIN ? setIsVisible(true) : setIsVisible(false)
     
   },[context.area])
 
   const mainOptions = [
     {
-      title:'Home',
+      title:Area.HOME,
       access:['admin','cliente']
     },
     {
-      title:'Llenar',
+      title:Area.LLENAR,
       access:['admin','cliente']
     },
     {
-      title:'Pedientes',
+      title:Area.PENDIENTE,
       access:['admin']
     },
     {
-      title:'Default',
+      title:Area.DEFAULT,
       access:['admin']
     },
   ]
@@ -39,15 +40,19 @@ const SideBar = () => {
 
   const moreOptions = [
     {
-      title:'Editar',
+      title:Area.EDITAR,
       access:['admin','cliente']
     },
     {
-      title:'PrintArea',
+      title:Area.PRINT_AREA,
       access:['admin']
     },
     {
-      title:'Login',
+      title:Area.LOGIN,
+      access:['admin']
+    },
+    {
+      title:Area.DB_LOGIN,
       access:['admin']
     },
   ]

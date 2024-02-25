@@ -1,6 +1,7 @@
 
 
 import SideBar from "../components/SideBar";
+import DBLogin from "./DBLogin";
 import Default from "./Default";
 
 
@@ -33,6 +34,7 @@ const MainView =()=>{
         <Home/>
         <LLenar/>
         <MyPendietes/>
+        <DBLogin/>
         <Default/>
         
         

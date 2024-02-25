@@ -49,8 +49,8 @@ const LoginForm = () => {
 
   const inputRefs = [useRef(null), useRef(null)];
   const inputDetails = [
-    { name: "userName", placeholder: "Nombre de usuario" },
-    { name: "password", placeholder: "" },
+    { name: "userName", placeholder: "Nombre de usuario",type:"text" },
+    { name: "password", placeholder: "password",type:"password" },
   ];
   const checkAllCampos = (e) => {
     setAlerta({

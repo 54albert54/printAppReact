@@ -1,7 +1,8 @@
-import {  useRef, useState } from "react";
+import {   useRef, useState } from "react";
 import useContext from "../context/provider";
 import AreaView from "../UI/AreaView"
 import MainTitle from "../UI/MainTitle"
+import {Area} from '../context/types.ts'
 
 
 
@@ -21,6 +22,7 @@ import FormCheck from "../components/FormCheck";
 const Llenar = () => {
  
   const context = useContext();
+ 
   const [alertas, setAlerta] = useState({
     motivoValido: false,
     monto: false,
@@ -34,12 +36,7 @@ const Llenar = () => {
     monto: "",
     clientName: "",
   });
-
-
-
-
-  const checkAllCampos = (e) => {
-
+  const cleanAlarm = ()=>{
     setAlerta({
       ...alertas,
       clientName: false,
@@ -47,9 +44,16 @@ const Llenar = () => {
       montoMaximo: false,
       inicioCero: false,
     });
+  }
+
+
+
+  const checkAllCampos = (e) => {
+    cleanAlarm()
+  
 
     const userValue = e.target.name;
-    const value = e.target.value;
+    let value = e.target.value;
     //por si se borrar todo no quede guardado
     if (value.length < 1 ){
       setValues({ ...values, [userValue]: ''});
@@ -58,6 +62,7 @@ const Llenar = () => {
 
     if (userValue == "monto") {
       if (value.length > 7) {
+      
         setAlerta({ ...alertas, montoMaximo: true });
       }
       if (e.target.value == "0" || e.target.value == ".") {
@@ -66,9 +71,10 @@ const Llenar = () => {
         setAlerta({ ...alertas, inicioCero: true });
       }
 
-      const regex = /^\d{0,7}(\.\d{0,2})?$/;
+      const regex = /^\d{0,8}(\.\d{0,2})?$/;
       if (!regex.test(value)) {
         e.target.value = values.monto.slice(0, value.length - 1);
+        value = values.monto.slice(0, value.length - 1);
       }
     }
     setValues({ ...values, [userValue]: value });
@@ -120,7 +126,7 @@ const Llenar = () => {
         NombreCliente:
           values.clientName.charAt(0).toUpperCase() +
           values.clientName.slice(1),
-        ID: Math.floor(Math.random() * (1900 + 9990)),
+        ID:context.nextID,
         motivo:
           motivoDefault.charAt(0).toUpperCase() + motivoDefault.slice(1) + ".",
         active: true,
@@ -132,6 +138,7 @@ const Llenar = () => {
           cantidadSinCero
         )} con ${centavosReales}/100 `,
       };
+
       setValues({
         motivo: "",
         monto: "",
@@ -139,9 +146,11 @@ const Llenar = () => {
       })
 
       context?.setDataToShow(realValue);
-      context?.setArea("PrintArea");
+      context?.setArea(Area.PRINT_AREA);
+      reFreshInputs()
     }
   };
+
 
   const AllAlerts = [
     {
@@ -166,21 +175,30 @@ const Llenar = () => {
     },
   ];
 
+
   const inputRefs = [useRef(null), useRef(null), useRef(null)]; // Puedes agregar más useRef para más inputs
   const inputDetails = [
-    { name: "clientName", placeholder: "Nombre del cliente" },
-    { name: "motivo", placeholder: "Motivo de pago" },
-    { name: "monto", placeholder: "Cantidad a pagar" },
+    { name: "clientName", placeholder: "Nombre del cliente",type:"text" },
+    { name: "motivo", placeholder: "Motivo de pago",type:"text" },
+    { name: "monto", placeholder: "Cantidad a pagar",type:"text" },
   ];
+
+  const reFreshInputs = ()=>{   
+    cleanAlarm() 
+    inputRefs.forEach(ref =>{
+      ref.current.value = ' '
+    })
+    
+  }
 
 
   return (
-    <AreaView area={"Llenar"}>
-      <MainTitle title={'Edita'}/>
+    <AreaView area={Area.LLENAR}>
+      <MainTitle title={`Edita el cheque #${context.nextID}`}/>
 
       
       <FormCheck
-        formFor={'Llenar'}    
+        formFor={Area.LLENAR}    
         inputRefs={inputRefs} 
         inputDetails={inputDetails}
         checkAllCampos={checkAllCampos}
@@ -191,6 +209,7 @@ const Llenar = () => {
 
       <div className="absolute bottom-0 z-20   left-6 h-24 flex flex-row justify-center items-center gap-12  max-w-[760px] w-screen m-auto">
         <IconButton action={sendValues} title={"Print"} />
+        <IconButton action={reFreshInputs} title={"Delete"} />
       </div>
       </AreaView>
   );

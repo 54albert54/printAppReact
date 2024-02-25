@@ -1,13 +1,18 @@
 "use strict";
 import  mysql from 'mysql2/promise';
 
+const objetoStringRecuperado = localStorage.getItem("DataB/V1");
+// Convertir la cadena JSON de nuevo a un objeto JavaScript
+const objetoRecuperado = JSON.parse(objetoStringRecuperado);
 
+    console.log('Tenmos datos',objetoRecuperado);
+    
 
     const connectInfo = {
-      host: 'localhost',
-      user: 'root',
-      password: 'asdfghjkl',
-      database: 'checkData'
+      host: objetoRecuperado?.host,
+      user: objetoRecuperado?.user,
+      password: objetoRecuperado?.password,
+      database: objetoRecuperado?.dataBase
   }
     
       let instancia = null

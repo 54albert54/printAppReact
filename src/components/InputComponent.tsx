@@ -8,21 +8,22 @@ const InputComponent = ({
   handleKeyDown,
 }) => {
   const [showPassword, setShowPassword] = useState("password");
-  const isPasswordType = inputDetails[index].name == showPassword;
+  const isPasswordType = inputDetails[index].type == showPassword;
 
+  
   return (
     <label
       htmlFor={inputDetails[index].name}
       className={`
       ${
-        inputDetails[index].name == "password"
+        inputDetails[index].type == "password"
           ? " flex justify-between pr-6"
           : ""
       }
     relative w-full h-12 py-2 pl-3 block rounded-md border bg-white border-gray-200 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600`}
     >
       <input
-        type={isPasswordType ? "password" : "text"}
+        type={isPasswordType?'password':'text' }
         name={inputDetails[index].name}
         placeholder={inputDetails[index].placeholder}
         onChange={checkAllCampos}
@@ -33,7 +34,7 @@ const InputComponent = ({
       <span className="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 rounded-lg p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs peer-focus:my-2">
         {inputDetails[index].placeholder}
       </span>
-      {inputDetails[index].name == "password" && (
+      {inputDetails[index].type == "password" && (
         <EyeIcon
           isPasswordType={isPasswordType}
           setShowPassword={setShowPassword}

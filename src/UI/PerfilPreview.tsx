@@ -21,7 +21,7 @@ const PerfilPreview = () => {
         </div>
       </div>
     {/* button logout */}
-      <div onClick={() =>context.logout()}>
+      <div onClick={() =>context?.logout()}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="icon icon-tabler icon-tabler-logout hover:cursor-pointer hover:stroke-blue-500"

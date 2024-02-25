@@ -14,8 +14,10 @@
     "pack": "electron-builder  "
   },
   "dependencies": {
+    "dotenv": "^16.4.5",
     "express": "^4.18.2",
     "mysql2": "^3.9.1",
+    "process": "^0.11.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.1"
@@ -29,6 +31,7 @@
     "autoprefixer": "^10.4.17",
     "electron": "^28.2.3",
     "electron-builder": "^24.9.1",
+    "electron-reload": "^2.0.0-alpha.1",
     "eslint": "^8.56.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
