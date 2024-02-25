@@ -24,7 +24,7 @@ const MainView =()=>{
      <PrintArea/> 
      <Login/>
       
-    <section className="flex flex-row justify-center h-screen  overflow-hidden pt-6 px-20 ">
+    <section className="flex flex-row justify-center h-screen  overflow-hidden py-6 px-20 ">
      
       <SideBar/>
       <section>

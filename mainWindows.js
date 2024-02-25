@@ -1,4 +1,4 @@
-import { app , BrowserWindow  } from 'electron'
+import { app , BrowserWindow , Menu  } from 'electron'
 import path from'path'
 
 export default function initialWindows (){
@@ -26,9 +26,30 @@ function createWindow () {
   
   
   // End of the file
+
+  // Crea un menú personalizado para la ventana principal
+  const mainMenu = Menu.buildFromTemplate([
+    {
+      label: 'Tools',
+      submenu: [
+        {
+          label: 'Quit',
+          accelerator: process.platform === 'darwin' ? 'Alt+Command+I' : 'Ctrl+Shift+I',
+          click() {
+            // Ignora la solicitud de abrir las herramientas de desarrollo
+            app.quit() 
+          }
+        }
+      ]
+    }
+  ]);
+  Menu.setApplicationMenu(mainMenu);
   
   
-  } 
+   } 
+
+// Deshabilitar las herramientas de desarrollo
+app.commandLine.appendSwitch('disable-dev-tools', 'true');
 
 // This method will be called when Electron has finished 
 // initialization and is ready to create browser windows. 

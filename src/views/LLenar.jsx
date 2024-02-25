@@ -167,7 +167,7 @@ const Llenar = () => {
     },
     {
       show: alertas.montoMaximo,
-      title: "La cantidad maxima es 9,999,999!",
+      title: "La cantidad maxima es 99,999,999!",
     },
     {
       show: alertas.inicioCero,

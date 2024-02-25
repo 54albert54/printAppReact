@@ -5,7 +5,18 @@ import { useEffect, useRef, useState } from "react";
 import MainTitle from "../UI/MainTitle.tsx";
 import { channels } from "../../constants.js";
 import Context from "../context/provider";
-const { ipcRenderer } = window.require("electron");
+import configApp from "../context/config"
+// const { ipcRenderer } = window.require("electron");
+
+
+let ipcRenderer
+if (configApp.idDev){
+ipcRenderer = window.require('electron').ipcRenderer
+}
+
+
+
+
 const DBLogin = () => {
   const context = Context();
   const [dataBase, setDataBase] = useState("No Data");
@@ -33,12 +44,13 @@ const DBLogin = () => {
   };
 
   useEffect(() => {
+    if (configApp.idDev){
 
     ipcRenderer.send(channels.PUT_BD, {
       newDado: "a",
     });
     ipcRenderer.on(channels.PUT_BD, async (_, arg) => {
-      console.log("arg", arg);
+      
       setDataBase(arg);
     });
 
@@ -51,6 +63,13 @@ const DBLogin = () => {
     return () => {
       ipcRenderer.removeAllListeners();
     };
+
+
+  }else{
+    console.log('estas en desarrollo');
+    
+  }
+
   }, [context?.area]);
 
   const handleSubmit = () => {

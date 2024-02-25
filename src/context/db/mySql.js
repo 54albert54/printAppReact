@@ -2,10 +2,10 @@
 // import configApp from "../config/index.js"
 
 
-
-//if (configApp.idDev){
- const { ipcRenderer} = window.require('electron')
-//}
+// let ipcRenderer
+// if (configApp.idDev){
+// }
+const { ipcRenderer } = window.require('electron')
 
 //const { ipcRenderer } = window.require('electron');
 import { channels } from '../../../constants.js';
@@ -37,8 +37,9 @@ const getData = ()=>{
 }
 
 const putData=(datos)=>{
-
-   ipcRenderer.send(channels.PUT_DATA, { newDado: datos });
+  console.log('datos',datos);
+  
+    ipcRenderer.send(channels.PUT_DATA, { newDado: datos });
 
 
 

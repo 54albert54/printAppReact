@@ -29,7 +29,7 @@ const Default =()=>{
     if (configApp.isDev){
     ipcRenderer.on(channels.GET_DATA, async ( _ ,arg) => {
     
-      console.log('desde adentro');
+    
       
       setData(arg) 
    

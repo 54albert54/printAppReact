@@ -19,7 +19,7 @@ export default function AreaView({ children, area, fullScreen = false }) {
                 ? "!h-screen !w-screen bg-backGround flex-col items-center"
                 : "justify-center bg-white"
             }`
-          : "relative !bg-backGround  w-[860px] min-h-[520px] h-[80%] z-20 shadow-xl m-auto flex flex-col   px-12 pt-6"
+          : "relative !bg-backGround  w-[860px] min-h-[520px] h-full z-20 shadow-xl m-auto flex flex-col   px-12 pt-6"
       }`}
     >
       {children}

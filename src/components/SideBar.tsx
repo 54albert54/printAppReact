@@ -31,10 +31,10 @@ const SideBar = () => {
     //   title:Area.PENDIENTE,
     //   access:['admin']
     // },
-    {
-      title:Area.DEFAULT,
-      access:['admin']
-    },
+    // {
+    //   title:Area.DEFAULT,
+    //   access:['admin']
+    // },
   ]
 
 
@@ -62,7 +62,7 @@ const SideBar = () => {
     <section className={` ${
       isVisible? " " : "hidden"
     }`}>
-      <section className="flex relative min-h-[520px] h-[80%]  w-[320px]  z-30 shadow-xl  flex-col justify-between border-e bg-white">
+      <section className="flex relative min-h-[520px] h-full  w-[320px]  z-30 shadow-xl  flex-col justify-between border-e bg-white">
         <div className="px-4 py-6">
           <span className="grid h-10 w-32 place-content-center rounded-lg bg-gray-100 text-xs text-gray-600">
             Logo
