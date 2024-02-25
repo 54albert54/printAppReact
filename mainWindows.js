@@ -1,13 +1,14 @@
 import { app , BrowserWindow , Menu  } from 'electron'
 import path from'path'
 
+
 export default function initialWindows (){
 function createWindow () { 
   // Create the browser window. 
   const win = new BrowserWindow({ 
     width: 1200, 
     height: 800, 
-    icon: path.join("./access/icon.png"), // Ruta al icono
+    icon: path.join("./build/icon.png"), // Ruta al icono
     webPreferences: { 
       nodeIntegration: true,
       enableRemoteModule: true,
