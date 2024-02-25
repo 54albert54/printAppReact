@@ -27,10 +27,10 @@ const SideBar = () => {
       title:Area.LLENAR,
       access:['admin','cliente']
     },
-    {
-      title:Area.PENDIENTE,
-      access:['admin']
-    },
+    // {
+    //   title:Area.PENDIENTE,
+    //   access:['admin']
+    // },
     {
       title:Area.DEFAULT,
       access:['admin']
@@ -43,14 +43,14 @@ const SideBar = () => {
       title:Area.EDITAR,
       access:['admin','cliente']
     },
-    {
-      title:Area.PRINT_AREA,
-      access:['admin']
-    },
-    {
-      title:Area.LOGIN,
-      access:['admin']
-    },
+    // {
+    //   title:Area.PRINT_AREA,
+    //   access:['admin']
+    // },
+    // {
+    //   title:Area.LOGIN,
+    //   access:['admin']
+    // },
     {
       title:Area.DB_LOGIN,
       access:['admin']

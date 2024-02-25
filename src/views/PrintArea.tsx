@@ -5,7 +5,7 @@ import ShowImgBlank from "../components/ShowImgBlank";
 import MenuButtons from "../UI/MenuButton";
 import PrintReferencias from "../components/PrintReferencias";
 import AreaView from "../UI/AreaView";
-import configApp from "../context/config"
+// import configApp from "../context/config"
  import db from '../context/db/mySql.js'
  import {Area} from '../context/types.ts'
 
@@ -24,24 +24,20 @@ const PrintArea = () => {
       }
     }
   };
-  const reformData = (newData)=>{
 
-    const dataToSave = {
-      checkId:context.nextID,
-      clientName: newData.NombreCliente,
-      amount: newData.Cantidad,
-      reason: newData.motivo,
-      dateCreated: newData.FechaColilla,
-      isActive: 1,
-    };
+  // const reformData = (newData)=>{
 
-    context?.saveDataInArchive(dataToSave)
+  //   const dataToSave = {
+  //     checkId:context.nextID,
+  //     clientName: newData.NombreCliente,
+  //     amount: newData.Cantidad,
+  //     reason: newData.motivo,
+  //     dateCreated: newData.FechaColilla,
+  //     isActive: 1,
+  //   };
 
-
-
-
-
-  }
+  //   context?.saveDataInArchive(dataToSave)
+  // }
 
   useEffect(() => {
     if (context.area === Area.PRINT_AREA) {
@@ -58,9 +54,9 @@ const PrintArea = () => {
        
       setTimeout(()=>{
 
-        // window.print()
-   
-        configApp.idDev ? db.putData(context?.dataToShow) : reformData(context?.dataToShow)
+         window.print()
+        db.putData(context?.dataToShow)
+        //  reformData(context?.dataToShow)
         context?.setDataToShow({
           centavos: "",
           monto: "",

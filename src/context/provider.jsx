@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import { pruebaCheck, referencias } from "./storage";
+import { Area } from "./types";
 
 
 
@@ -10,7 +11,7 @@ const CheckContext = createContext({})
   //admin','cliente
 const users =[ 
   {
-  userName:'---',
+  userName:'dd',
   name:"---",
   role:"admin",
   detail:'Todas las vistas',
@@ -21,7 +22,7 @@ const users =[
   userName:'admin',
   name:"ADMIN",
   role:"admin",
-  detail:'Todas las vistas',
+  detail:'Cosas de admin',
   password:'asdf',
   img:'https://png.pngtree.com/png-vector/20190118/ourmid/pngtree-user-vector-icon-png-image_328702.jpg'
 },
@@ -29,7 +30,7 @@ const users =[
   userName:'cliente',
   name:"cliente",
   role:"cliente",
-  detail:'acceso limitado',
+  detail:'Cosas de cliente',
   password:'asdf',
   img:'https://www.speak2university.com/assets/admin/dist/img/user-avatar.png'
 },
@@ -39,9 +40,9 @@ const users =[
 
 export const CheckContextProvider = ({ children }) => {
   const [references, setReferences] = useState(referencias);
-  const [area, setArea] = useState("Home");
+  const [area, setArea] = useState(Area.LOGIN);
   const [printArea, setPrintArea] = useState(false);
-  const [auth ,setAuth] = useState(users[0]);
+  const [auth ,setAuth] = useState(null);
   const [nextID , setNextID] = useState(0)
   //datos que se llenan con el form
   const [dataToShow, setDataToShow] = useState({

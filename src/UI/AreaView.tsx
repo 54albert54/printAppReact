@@ -16,7 +16,7 @@ export default function AreaView({ children, area, fullScreen = false }) {
         fullScreen
           ? `   z-10 h-[800px]  w-[1200px] mx-auto flex  ${
               context.area == Area.LOGIN
-                ? "!h-screen !w-screen bg-backGround fixed flex-col items-center"
+                ? "!h-screen !w-screen bg-backGround flex-col items-center"
                 : "justify-center bg-white"
             }`
           : "relative !bg-backGround  w-[860px] min-h-[520px] h-[80%] z-20 shadow-xl m-auto flex flex-col   px-12 pt-6"

@@ -5,13 +5,13 @@ import { TCheckList } from "../context/types";
 //const { ipcRenderer } = window.require('electron');
 import { channels } from '../../constants.js';
 import db from '../context/db/mySql.js'
-import configApp from "../context/config"
+// import configApp from "../context/config"
 
 
-let ipcRenderer
-if (configApp.idDev){
-  ipcRenderer = window.require('electron');
-}
+// let ipcRenderer
+// if (configApp.idDev){
+const { ipcRenderer} = window.require('electron')
+// }
 export default function MainTableView() {
     const context = Context() 
     // const [allData, setAllData] = useState<[TDataToShow]>(context.data)
@@ -20,23 +20,23 @@ export default function MainTableView() {
 
     
     useEffect(()=>{
-        if (configApp.idDev){
+        // if (configApp.idDev){
         db.sendData('mera prueba')
         ipcRenderer.on(channels.GET_DATA, async ( _ ,arg) => {
-            context?.calculateNextID(arg)
+            context.calculateNextID(arg)
             setDataDB(arg) 
          });
-        }else{
-            context?.calculateNextID(context.data)
-            setDataDB(context.data)   
-        }
+        // }else{
+        //     context?.calculateNextID(context.data)
+        //     setDataDB(context.data)   
+        // }
             
       
           
          
           // Clean the listener after the component is dismounted
           return () => {
-            configApp.idDev && ipcRenderer.removeAllListeners();
+             ipcRenderer.removeAllListeners();
           };
 
     },[context?.area])

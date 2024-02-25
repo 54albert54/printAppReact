@@ -1,18 +1,26 @@
 "use strict";
 import  mysql from 'mysql2/promise';
+import  Store from 'electron-store'
 
-const objetoStringRecuperado = localStorage.getItem("DataB/V1");
+// Crea una nueva instancia de Store
+const store = new Store();
+
+const objetoStringRecuperado = store.get("DataB/V1");
+let  objetoRecuperado = 'no data'
 // Convertir la cadena JSON de nuevo a un objeto JavaScript
-const objetoRecuperado = JSON.parse(objetoStringRecuperado);
+if (objetoStringRecuperado){
+ objetoRecuperado = JSON.parse(objetoStringRecuperado);
 
-    console.log('Tenmos datos',objetoRecuperado);
+}
+
+
     
 
     const connectInfo = {
-      host: objetoRecuperado?.host,
-      user: objetoRecuperado?.user,
-      password: objetoRecuperado?.password,
-      database: objetoRecuperado?.dataBase
+      host: objetoRecuperado?.host ? objetoRecuperado?.host :'mysql.hoster905.com' ,
+      user: objetoRecuperado?.user ? objetoRecuperado?.user :'monarauayb',
+      password: objetoRecuperado?.password ? objetoRecuperado?.password :'Pokemon54@',
+      database: objetoRecuperado?.database ? objetoRecuperado?.database :'monarau_db'
   }
     
       let instancia = null

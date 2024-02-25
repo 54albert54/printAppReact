@@ -4,7 +4,7 @@ const PerfilPreview = () => {
   const context = useContext();
 
   return (
-    <section className="sticky inset-x-0 bottom-0 border-t border-gray-100 flex flex-row justify-between items-center pr-8">
+    <section className="sticky inset-x-0 bottom-0 border-t border-gray-100 bg-white flex flex-row justify-between items-center pr-8">
       <div className="flex items-center gap-2 bg-white p-4 hover:bg-gray-50">
         <img
           alt=""
@@ -16,7 +16,7 @@ const PerfilPreview = () => {
           <p className="text-xs">
             <strong className="block font-medium">{context?.auth?.name}</strong>
 
-            <span> {context?.auth?.role}</span>
+            <span> {context?.auth?.detail}</span>
           </p>
         </div>
       </div>

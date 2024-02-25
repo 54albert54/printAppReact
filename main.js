@@ -1,37 +1,19 @@
 import { ipcMain } from "electron";
-
+import  Store from 'electron-store'
 import dataBase from "./db/mySql.js";
 import { channels } from "./constants.js";
 import initialWindows from "./mainWindows.js";
+const store = new Store();
 
-
-// import * as path from 'path';
-import dotenv from 'dotenv';
-// const __dirname = path.resolve();
-// const process = window.process;
 
 
 initialWindows();
-// import db from "./server/BD/mySql.js";
-// import runServer from './serverApi.js';
-dotenv.config();
-
-
-
-// Habilita la recarga en caliente solo en el entorno de desarrollo
-// if (process.env.NODE_ENV === 'development') {
-//   electronReload(__dirname, {
-//     electron: path.join(__dirname, 'node_modules', '.bin', 'electron')
-//   });
-// }
 
 
 
 
 async function getData(event) {
   const data = await dataBase.list();
-
-
   event.sender.send(channels.GET_DATA, data);
 }
 
@@ -44,7 +26,7 @@ ipcMain.on(channels.PUT_DATA, async (event, arg) => {
 
   const dataToSave = {
     clientName: newDado.NombreCliente,
-    amount: parseFloat(newDado.Cantidad),
+    amount: newDado.Cantidad,
     reason: newDado.motivo,
     dateCreated: newDado.FechaColilla,
     isActive: 1,
@@ -55,7 +37,31 @@ ipcMain.on(channels.PUT_DATA, async (event, arg) => {
  
   //getData(event)
 });
-
+//checkData
 getData();
+
+ipcMain.on(channels.SET_BD, async (event, arg) => {
+  const { newDado } = arg;
+ 
+  
+  const objetoString = JSON.stringify(newDado);
+  store.set('DataB/V1', objetoString);
+  
+});
+ipcMain.on(channels.PUT_BD, async (event, arg) => {
+  const { newDado } = arg;
+  
+
+
+  const objetoStringRecuperado = store.get("DataB/V1");
+  let objetoRecuperado = " no hay nada"
+  if (objetoStringRecuperado){
+    objetoRecuperado = JSON.parse(objetoStringRecuperado);
+   
+   } // Imprime: valor
+  
+event.sender.send(channels.PUT_BD, objetoRecuperado);
+
+});
 
 

@@ -4,8 +4,19 @@
   "version": "0.0.0",
   "type": "module",
   "main": "main.js",
+  "win": {
+    "target": "nsis",
+    "arch": [
+      "x64" 
+    ]
+  },
+  "nsis": {
+    "oneClick": false,
+    "perMachine": false,
+    "allowToChangeInstallationDirectory": true
+  },
   "scripts": {
-    "start:electron": "ELECTRON_START_URL=http://localhost:3000 electron .",
+  
     "deve": "  electron .",
     "dev": "vite",
     "build": "tsc && vite build",
@@ -15,6 +26,7 @@
   },
   "dependencies": {
     "dotenv": "^16.4.5",
+    "electron-store": "^8.1.0",
     "express": "^4.18.2",
     "mysql2": "^3.9.1",
     "process": "^0.11.10",

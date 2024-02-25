@@ -20,7 +20,7 @@ function createWindow () {
   win.loadFile('./pages/index.html') 
   
   // Open the DevTools. 
-    win.webContents.openDevTools() 
+  //  win.webContents.openDevTools() 
   
     // Exponer la función de impresión al contexto del renderizado
   

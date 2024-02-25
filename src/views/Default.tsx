@@ -12,7 +12,7 @@ import { TCheckList } from "../context/types.js";
 // const { ipcRenderer } = window.require('electron');
   let ipcRenderer
 if (configApp.isDev){
-   ipcRenderer = window.require('electron');
+   ipcRenderer = window.require('electron').ipcRenderer;
 }
 
 
