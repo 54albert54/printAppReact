@@ -1,0 +1,19 @@
+{
+  "name": "electonapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "dev": "npx electronmon .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^29.0.1",
+    "electron-store": "^8.1.0",
+    "electronmon": "^2.0.2",
+    "mysql2": "^3.9.2"
+  }
+}
