@@ -1,6 +1,5 @@
-
 const configApp = {
-  isDev:'development' === 'development'
-}
+  isDev: "development" === "development",
+};
 
-export default configApp
+export default configApp;

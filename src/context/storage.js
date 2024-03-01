@@ -132,4 +132,3 @@ export const pruebaCheck = [
     DetalleCantidad: "mas letras de los numeros",
   },
 ];
-

@@ -4,8 +4,8 @@ const PerfilPreview = () => {
   const context = useContext();
 
   return (
-    <section className="sticky inset-x-0 bottom-0 border-t border-gray-100 bg-white flex flex-row justify-between items-center pr-8">
-      <div className="flex items-center gap-2 bg-white p-4 hover:bg-gray-50">
+    <section className="sticky inset-x-0 bottom-0 border-t border-gray-100   flex flex-row justify-between items-center pr-8">
+      <div className="flex items-center gap-2  p-4 hover:bg-gray-50  rounded-l-lg ">
         <img
           alt=""
           src={context?.auth?.img}
@@ -20,8 +20,8 @@ const PerfilPreview = () => {
           </p>
         </div>
       </div>
-    {/* button logout */}
-      <div onClick={() =>context?.logout()}>
+      {/* button logout */}
+      <div onClick={() => context?.logout()}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="icon icon-tabler icon-tabler-logout hover:cursor-pointer hover:stroke-blue-500"

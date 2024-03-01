@@ -5,10 +5,9 @@ import ShowImgBlank from "../components/ShowImgBlank";
 import MenuButtons from "../UI/MenuButton";
 import PrintReferencias from "../components/PrintReferencias";
 import AreaView from "../UI/AreaView";
-// import configApp from "../context/config"
- import db from '../context/db/mySql.js'
- import {Area} from '../context/types.ts'
-
+import configApp from "../context/config";
+import db from "../context/db/mySql.js";
+import { Area } from "../context/types.ts";
 
 let pressEnter = 0;
 const PrintArea = () => {
@@ -25,19 +24,18 @@ const PrintArea = () => {
     }
   };
 
-  // const reformData = (newData)=>{
+  const reformData = (newData) => {
+    const dataToSave = {
+      checkId: context.nextID,
+      clientName: newData.NombreCliente,
+      amount: newData.Cantidad,
+      reason: newData.motivo,
+      dateCreated: newData.FechaColilla,
+      isActive: 1,
+    };
 
-  //   const dataToSave = {
-  //     checkId:context.nextID,
-  //     clientName: newData.NombreCliente,
-  //     amount: newData.Cantidad,
-  //     reason: newData.motivo,
-  //     dateCreated: newData.FechaColilla,
-  //     isActive: 1,
-  //   };
-
-  //   context?.saveDataInArchive(dataToSave)
-  // }
+    context?.saveDataInArchive(dataToSave);
+  };
 
   useEffect(() => {
     if (context.area === Area.PRINT_AREA) {
@@ -50,13 +48,15 @@ const PrintArea = () => {
 
   const sendToPrint = () => {
     if (context?.dataToShow.Cantidad) {
-      setReadyToPrint(true)
-       
-      setTimeout(()=>{
+      setReadyToPrint(true);
 
-         window.print()
-        db.putData(context?.dataToShow)
-        //  reformData(context?.dataToShow)
+      setTimeout(() => {
+        window.print();
+        if (configApp.isDev) {
+          db.putData(context?.dataToShow);
+        } else {
+          reformData(context?.dataToShow);
+        }
         context?.setDataToShow({
           centavos: "",
           monto: "",
@@ -64,14 +64,9 @@ const PrintArea = () => {
         });
         context?.setArea(Area.HOME);
         setTimeout(() => {
-         
-        
-          setReadyToPrint(false)
+          setReadyToPrint(false);
         }, 300);
-
-
-      },500)
-     
+      }, 500);
     } else {
       context?.setArea(Area.LLENAR);
     }
@@ -79,9 +74,6 @@ const PrintArea = () => {
 
   const goBack = () => {
     context?.setArea(Area.LLENAR);
-  
-
-
   };
   const buttonForPrintArea = [
     {
@@ -96,11 +88,9 @@ const PrintArea = () => {
 
   return (
     <AreaView area={"PrintArea"} fullScreen>
-    <div className=" relative w-[720px] h-[320px]">
-      <PrintReferencias styleRef={styleRef} />
-      
-    </div>
-
+      <div className=" relative w-[720px] h-[320px]">
+        <PrintReferencias styleRef={styleRef} />
+      </div>
 
       <div className={`absolute ${readyToPrint ? "hidden" : ""}`}>
         <div className="relative  top-[360px] left-48 ">

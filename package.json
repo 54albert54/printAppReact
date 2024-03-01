@@ -2,9 +2,20 @@
   "name": "printapp",
   "private": true,
   "version": "0.0.0",
+  "description": " -",
   "type": "module",
   "main": "main.js",
-
+   "build": {
+    "appId": "com.miaplicacion",
+    "productName": "Mi Aplicación",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "./build/icon.png" 
+    }
+  },
   "scripts": {
     "deve": "  electron .",
     "dev": "vite",
@@ -18,11 +29,14 @@
     "dotenv": "^16.4.5",
     "electron-store": "^8.1.0",
     "express": "^4.18.2",
+    "file-saver": "^2.0.5",
     "mysql2": "^3.9.1",
     "process": "^0.11.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.22.1"
+    "react-router-dom": "^6.22.1",
+    "xlsx": "^0.18.5",
+    "xlsx-populate": "^1.21.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.55",
@@ -42,5 +56,4 @@
     "typescript": "^5.2.2",
     "vite": "^5.1.0"
   }
-  }
-
+}
