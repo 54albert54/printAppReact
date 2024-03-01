@@ -1,5 +1,4 @@
 import { app, BrowserWindow, Menu } from "electron";
-import path from "path";
 
 export default function initialWindows() {
   function createWindow() {
@@ -7,7 +6,7 @@ export default function initialWindows() {
     const win = new BrowserWindow({
       width: 1200,
       height: 800,
-      icon: path.join("./build/icon.png"), // Ruta al icono
+      icon: "./build/iconApp.ico", // Ruta al icono
       webPreferences: {
         nodeIntegration: true,
         enableRemoteModule: true,
@@ -32,8 +31,7 @@ export default function initialWindows() {
         submenu: [
           {
             label: "Quit",
-            accelerator:
-              process.platform === "darwin" ? "Alt+Command+I" : "Ctrl+Shift+I",
+            accelerator: process.platform === "darwin" ? " " : "",
             click() {
               // Ignora la solicitud de abrir las herramientas de desarrollo
               app.quit();
@@ -42,7 +40,7 @@ export default function initialWindows() {
         ],
       },
     ]);
-    // Menu.setApplicationMenu(mainMenu);
+    Menu.setApplicationMenu(mainMenu);
   }
 
   // Deshabilitar las herramientas de desarrollo
