@@ -1,11 +1,11 @@
-#PrintCheque - Aplicación para Imprimir Cheques
+# PrintCheque - Aplicación para Imprimir Cheques
 #### PrintCheque es una aplicación diseñada para imprimir cheques de forma personalizada, permitiendo a los usuarios mover cada uno de los campos según sus necesidades. Además, ofrece la capacidad de guardar los datos en una base de datos MySQL para una persistencia de datos confiable.
 
 
-##screenshots
+## screenshots
 [![https://pbs.twimg.com/media/GHoFhlxXMAAmYWN?format=jpg&name=large](https://pbs.twimg.com/media/GHoFhlxXMAAmYWN?format=jpg&name=large "https://pbs.twimg.com/media/GHoFhlxXMAAmYWN?format=jpg&name=large")](https://pbs.twimg.com/media/GHoFhlxXMAAmYWN?format=jpg&name=large "https://pbs.twimg.com/media/GHoFhlxXMAAmYWN?format=jpg&name=large")
 
-[![https://pbs.twimg.com/media/GHoFhlxXgAATdxY?format=jpg&name=large](https://pbs.twimg.com/media/GHoFhlxXgAATdxY?format=jpg&name=large "https://pbs.twimg.com/media/GHoFhlxXgAATdxY?format=jpg&name=large")](https://pbs.twimg.com/media/GHoFhlxXgAATdxY?format=jpg&name=large "https://pbs.twimg.com/media/GHoFhlxXgAATdxY?format=jpg&name=large")[![https://pbs.twimg.com/media/GHoFhlvWEAA-B_4?format=jpg&name=large](https://pbs.twimg.com/media/GHoFhlvWEAA-B_4?format=jpg&name=large "https://pbs.twimg.com/media/GHoFhlvWEAA-B_4?format=jpg&name=large")](https://pbs.twimg.com/media/GHoFhlvWEAA-B_4?format=jpg&name=large "https://pbs.twimg.com/media/GHoFhlvWEAA-B_4?format=jpg&name=large")''
+[![https://pbs.twimg.com/media/GHoFhlxXgAATdxY?format=jpg&name=large](https://pbs.twimg.com/media/GHoFhlxXgAATdxY?format=jpg&name=large "https://pbs.twimg.com/media/GHoFhlxXgAATdxY?format=jpg&name=large")](https://pbs.twimg.com/media/GHoFhlxXgAATdxY?format=jpg&name=large "https://pbs.twimg.com/media/GHoFhlxXgAATdxY?format=jpg&name=large")[![https://pbs.twimg.com/media/GHoFhlvWEAA-B_4?format=jpg&name=large](https://pbs.twimg.com/media/GHoFhlvWEAA-B_4?format=jpg&name=large "https://pbs.twimg.com/media/GHoFhlvWEAA-B_4?format=jpg&name=large")](https://pbs.twimg.com/media/GHoFhlvWEAA-B_4?format=jpg&name=large "https://pbs.twimg.com/media/GHoFhlvWEAA-B_4?format=jpg&name=large")
 
 
 
@@ -20,7 +20,7 @@
 ### Demo
 [Pagina web](https://charming-sprinkles-e4f024.netlify.app/ "demoWeb")
 
-###Características
+### Características
 * Personalización de campos: Los usuarios pueden mover cada uno de los campos del cheque según sus preferencias, lo que permite una flexibilidad total en el diseño del cheque.
 
 * Persistencia de datos: La aplicación utiliza una base de datos MySQL para guardar los datos de los cheques, asegurando que la información esté siempre disponible y segura.
@@ -52,7 +52,7 @@ bash
 Copy code
 npm run dev : abre para navegador
 ```
-###Contribución
+### Contribución
 ¡Agradecemos tus contribuciones! Si deseas contribuir a PrintCheque, por favor sigue estos pasos:
 
 Haz un fork del repositorio y clónalo en tu máquina local.
