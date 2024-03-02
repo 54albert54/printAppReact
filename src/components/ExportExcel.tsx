@@ -26,7 +26,6 @@ export default function ExportExcel({ excelData }) {
 
   return (
     <section>
-      {/* <a download={dataD} href=""></a> */}
       <IconButton action={() => exportToExcel()} title={"Excel"} />
     </section>
   );

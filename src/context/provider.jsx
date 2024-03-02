@@ -3,7 +3,7 @@ import { pruebaCheck, referencias } from "./storage";
 import { Area } from "./types";
 
 const CheckContext = createContext({});
-//admin','cliente
+
 const users = [
   {
     userName: "dd",
@@ -33,10 +33,10 @@ const users = [
 
 export const CheckContextProvider = ({ children }) => {
   const [references, setReferences] = useState(referencias);
-  const [area, setArea] = useState(Area.LOGIN);
+  const [area, setArea] = useState(Area.HOME);
   const [printArea, setPrintArea] = useState(false);
   const [isInLocal, setIsInLocal] = useState(false);
-  const [auth, setAuth] = useState(null);
+  const [auth, setAuth] = useState(users[2]);
   const [nextID, setNextID] = useState(0);
   //datos que se llenan con el form
   const [dataToShow, setDataToShow] = useState({
